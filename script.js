@@ -243,15 +243,19 @@ function initPrizeCounter() {
 
   const targetAmount = 45000;
   let animId = null;
+  let hasCounted = false;
 
   function runCounter() {
+    if (hasCounted) return;
+    hasCounted = true;
+
     if (PREFERS_REDUCED_MOTION) {
       prizeCounter.textContent = targetAmount.toLocaleString("en-IN");
       return;
     }
 
     if (animId) cancelAnimationFrame(animId);
-    const duration = 1400; // ms
+    const duration = 1600; // ms
     const startTime = performance.now();
 
     function step(currentTime) {
@@ -275,18 +279,13 @@ function initPrizeCounter() {
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting && !hasCounted) {
         runCounter();
-      } else {
-        if (animId) {
-          cancelAnimationFrame(animId);
-          animId = null;
-        }
-        prizeCounter.textContent = "0";
+        observer.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.15,
+    threshold: 0.2,
     rootMargin: "0px 0px -30px 0px"
   });
 

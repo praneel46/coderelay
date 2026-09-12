@@ -1347,144 +1347,339 @@ body {
 }
 
 /* ============================================================
-   PRIZE POOL SECTION
+   PRIZE POOL SECTION (CINEMATIC PRIZE REVEAL STAGE)
    ============================================================ */
 .prize-section {
   position: relative;
+  overflow: hidden;
+  padding: 8rem 0 8.5rem 0;
+  background: radial-gradient(circle at 50% 50%, rgba(4, 14, 32, 0.65) 0%, var(--bg-black) 75%);
 }
 
-.orb-orange {
-  bottom: 10%;
-  right: 15%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, transparent 70%);
+/* Theatrical Atmospheric Lighting Core */
+.prize-ambient-stage {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
 }
 
-.orb-cyan {
-  top: 10%;
-  left: 15%;
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(0, 210, 255, 0.12) 0%, transparent 70%);
+.prize-glow-core {
+  width: 900px;
+  height: 520px;
+  max-width: 95vw;
+  background: radial-gradient(ellipse 65% 55% at 50% 50%, rgba(0, 210, 255, 0.18) 0%, rgba(2, 132, 199, 0.08) 45%, transparent 70%);
+  filter: blur(50px);
+  animation: prizeGlowPulse 6s ease-in-out infinite alternate;
 }
 
-.prize-card-wrapper {
-  padding: 4.5rem 2rem;
-  text-align: center;
+.prize-flare-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 1100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 210, 255, 0.25) 25%, rgba(0, 210, 255, 0.8) 50%, rgba(0, 210, 255, 0.25) 75%, transparent 100%);
+  box-shadow: 0 0 24px rgba(0, 210, 255, 0.45);
+  opacity: 0.65;
+}
+
+@keyframes prizeGlowPulse {
+  0% {
+    opacity: 0.65;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* The Open Reveal Stage */
+.prize-reveal-stage {
   position: relative;
-  background: radial-gradient(ellipse at center, rgba(8, 20, 42, 0.8) 0%, rgba(3, 7, 18, 0.95) 100%);
-  border: 1px solid rgba(0, 210, 255, 0.3);
-  box-shadow: 0 0 60px rgba(0, 210, 255, 0.12);
-  max-width: 860px;
+  z-index: 2;
+  max-width: 1080px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+}
+
+/* Telemetry Rails: Top & Bottom */
+.prize-telemetry-rail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 720px;
   margin: 0 auto;
 }
 
-.prize-card-corner {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border-color: var(--primary-cyan);
+.telemetry-line {
+  flex: 1;
+  height: 1px;
 }
 
-.prize-card-corner.tl { top: 12px; left: 12px; border-top: 2px solid; border-left: 2px solid; }
-.prize-card-corner.tr { top: 12px; right: 12px; border-top: 2px solid; border-right: 2px solid; }
-.prize-card-corner.bl { bottom: 12px; left: 12px; border-bottom: 2px solid; border-left: 2px solid; }
-.prize-card-corner.br { bottom: 12px; right: 12px; border-bottom: 2px solid; border-right: 2px solid; }
+.telemetry-line.left {
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 210, 255, 0.45) 100%);
+}
+
+.telemetry-line.right {
+  background: linear-gradient(90deg, rgba(0, 210, 255, 0.45) 0%, transparent 100%);
+}
+
+.telemetry-node {
+  width: 4px;
+  height: 4px;
+  background: var(--primary-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--primary-cyan);
+}
+
+.telemetry-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.26em;
+  color: var(--primary-cyan);
+  text-transform: uppercase;
+  padding: 5px 16px;
+  background: rgba(0, 210, 255, 0.06);
+  border: 1px solid rgba(0, 210, 255, 0.3);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 0 16px rgba(0, 210, 255, 0.12);
+}
+
+.telemetry-center-pip {
+  width: 36px;
+  height: 2px;
+  background: var(--primary-cyan);
+  box-shadow: 0 0 10px var(--primary-cyan);
+  border-radius: 2px;
+}
+
+/* Section Header */
+.prize-header {
+  margin: 2.25rem 0 2.5rem 0;
+}
 
 .prize-title {
   font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-size: clamp(1.8rem, 4.2vw, 2.75rem);
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   color: #ffffff;
-  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.15;
 }
 
-.prize-amount-display {
+/* Grand Central Focal Stage */
+.prize-focal-stage {
+  position: relative;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 2rem 2rem 2rem;
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+/* Cyber Aperture Reticles Flanking the Amount */
+.focal-bracket {
+  position: absolute;
+  top: 46%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 70%;
+  pointer-events: none;
+  opacity: 0.85;
+  transition: all var(--transition-normal);
+}
+
+.focal-bracket.bracket-l {
+  left: 1.5rem;
+  border-left: 2px solid var(--primary-cyan);
+  border-top: 2px solid var(--primary-cyan);
+  border-bottom: 2px solid var(--primary-cyan);
+}
+
+.focal-bracket.bracket-r {
+  right: 1.5rem;
+  border-right: 2px solid var(--primary-cyan);
+  border-top: 2px solid var(--primary-cyan);
+  border-bottom: 2px solid var(--primary-cyan);
+}
+
+.bracket-accent {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 2px;
+  background: #ffffff;
+  box-shadow: 0 0 10px var(--primary-cyan);
+}
+
+.focal-bracket.bracket-l .bracket-accent { left: 0; }
+.focal-bracket.bracket-r .bracket-accent { right: 0; }
+
+/* The Prize Amount Hero Display */
+.prize-amount-hero {
+  display: inline-flex;
   align-items: baseline;
   justify-content: center;
-  margin-bottom: 1.5rem;
-  width: 100%;
-  max-width: 100%;
-  overflow: visible;
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .currency-symbol {
   font-family: var(--font-heading);
-  font-size: clamp(2.2rem, 5.5vw, 5.5rem);
+  font-size: clamp(2.8rem, 7vw, 6.2rem);
   font-weight: 800;
   color: var(--primary-cyan);
-  margin-right: 0.35rem;
-  text-shadow: 0 0 35px rgba(0, 210, 255, 0.7);
+  margin-right: 0.45rem;
+  text-shadow: 0 0 32px rgba(0, 210, 255, 0.8), 0 0 60px rgba(0, 210, 255, 0.4);
+  line-height: 1;
   flex-shrink: 0;
+  transform: translateY(-0.06em);
 }
 
 .prize-counter {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 8.5vw, 8.8rem);
+  font-size: clamp(3.8rem, 10.5vw, 8.8rem);
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   line-height: 0.95;
-  background: linear-gradient(180deg, #ffffff 0%, #bae6fd 40%, #38bdf8 80%, #0284c7 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #e0f2fe 32%, #38bdf8 68%, #00d2ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 50px rgba(0, 210, 255, 0.8));
+  filter: drop-shadow(0 0 50px rgba(0, 210, 255, 0.85)) drop-shadow(0 4px 20px rgba(0, 0, 0, 0.95));
   display: inline-block;
+  will-change: transform, filter;
 }
 
+/* Radiant Horizon Beam underneath the Numbers */
+.prize-horizon-beam {
+  width: 100%;
+  max-width: 620px;
+  height: 2px;
+  margin-top: 2rem;
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 210, 255, 0.2) 15%, rgba(0, 210, 255, 0.95) 50%, rgba(0, 210, 255, 0.2) 85%, transparent 100%);
+  box-shadow: 0 0 18px rgba(0, 210, 255, 0.85), 0 0 35px rgba(0, 210, 255, 0.45);
+  border-radius: 2px;
+  transform-origin: center;
+}
+
+/* Supporting Statement with Laser Accents */
 .prize-supporting-line {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  margin-bottom: 0;
+  margin: 2.25rem 0 2.75rem 0;
 }
 
-.accent-dash {
-  width: 40px;
-  height: 2px;
-  background: var(--primary-cyan);
-  box-shadow: 0 0 10px var(--primary-cyan);
+.laser-beam {
+  flex: 0 1 90px;
+  height: 1px;
+}
+
+.laser-beam.beam-left {
+  background: linear-gradient(90deg, transparent 0%, var(--primary-cyan) 100%);
+  box-shadow: 0 0 8px var(--primary-cyan);
+}
+
+.laser-beam.beam-right {
+  background: linear-gradient(90deg, var(--primary-cyan) 0%, transparent 100%);
+  box-shadow: 0 0 8px var(--primary-cyan);
 }
 
 .stakes-text {
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  font-size: clamp(1rem, 2.4vw, 1.28rem);
   font-weight: 700;
   letter-spacing: 0.28em;
-  color: #ffffff;
+  color: #f1f5f9;
   text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 0 14px rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
 }
 
-.prize-meta-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  max-width: 900px;
-  margin: 0 auto;
-  border-top: 1px solid var(--border-subtle);
-  padding-top: 2.5rem;
+/* Staggered Reveal Orchestration */
+.prize-reveal-stage .top-rail {
+  opacity: 0;
+  transform: translateY(-12px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
 }
 
-.prize-meta-box {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+.prize-reveal-stage.is-revealed .top-rail {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.meta-title {
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: var(--primary-cyan);
+.prize-reveal-stage .prize-header {
+  opacity: 0;
+  transform: translateY(-12px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.25s, transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
 }
 
-.meta-desc {
-  font-size: 0.88rem;
-  color: var(--text-muted);
+.prize-reveal-stage.is-revealed .prize-header {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.prize-reveal-stage .prize-focal-stage {
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.35s, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.35s;
+}
+
+.prize-reveal-stage.is-revealed .prize-focal-stage {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.prize-reveal-stage .prize-horizon-beam {
+  transform: scaleX(0);
+  opacity: 0;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s, opacity 0.6s ease 0.5s;
+}
+
+.prize-reveal-stage.is-revealed .prize-horizon-beam {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.prize-reveal-stage .prize-supporting-line {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.65s, transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.65s;
+}
+
+.prize-reveal-stage.is-revealed .prize-supporting-line {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.prize-reveal-stage .bottom-rail {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.75s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.75s;
+}
+
+.prize-reveal-stage.is-revealed .bottom-rail {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ============================================================
@@ -2792,26 +2987,57 @@ body {
     grid-template-columns: 1fr;
   }
   
-  .prize-card-wrapper {
-    padding: 3.5rem 1.25rem;
-    border-radius: 20px;
-    max-width: 100%;
-    overflow: hidden;
+  .prize-section {
+    padding: 5.5rem 0 6rem 0;
   }
 
+  .prize-reveal-stage {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .prize-header {
+    margin: 1.5rem 0 1.75rem 0;
+  }
+
+  .prize-focal-stage {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .focal-bracket {
+    width: 18px;
+    height: 60%;
+  }
+
+  .focal-bracket.bracket-l { left: 0.25rem; }
+  .focal-bracket.bracket-r { right: 0.25rem; }
+
   .currency-symbol {
-    font-size: clamp(1.8rem, 6vw, 3.2rem);
-    margin-right: 0.25rem;
+    font-size: clamp(2.2rem, 6.8vw, 3.8rem);
+    margin-right: 0.35rem;
   }
 
   .prize-counter {
-    font-size: clamp(2.4rem, 8vw, 4.5rem);
+    font-size: clamp(2.8rem, 9.5vw, 5rem);
     letter-spacing: -0.025em;
   }
 
-  .prize-meta-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .prize-horizon-beam {
+    max-width: 320px;
+    margin-top: 1.25rem;
+  }
+
+  .prize-supporting-line {
+    gap: 1rem;
+    margin: 1.75rem 0 2rem 0;
+  }
+
+  .laser-beam {
+    flex: 0 1 45px;
+  }
+
+  .stakes-text {
+    font-size: clamp(0.85rem, 3.2vw, 1.05rem);
+    letter-spacing: 0.22em;
   }
   
   .footer-top-row {
@@ -2973,24 +3199,47 @@ body {
     letter-spacing: -0.03em;
   }
 
-  .prize-supporting-line {
-    gap: 0.6rem;
-    margin-bottom: 1.85rem;
+  .prize-section {
+    padding: 4.5rem 0 5rem 0;
   }
 
-  .accent-dash {
-    width: 20px;
+  .telemetry-tag {
+    font-size: 0.64rem;
+    letter-spacing: 0.18em;
+    padding: 4px 12px;
+  }
+
+  .focal-bracket {
+    width: 12px;
+    height: 52%;
+  }
+
+  .currency-symbol {
+    font-size: clamp(1.8rem, 6.2vw, 2.6rem);
+    margin-right: 0.25rem;
+  }
+
+  .prize-counter {
+    font-size: clamp(2.4rem, 8.8vw, 3.6rem);
+  }
+
+  .prize-horizon-beam {
+    max-width: 240px;
+    margin-top: 1rem;
+  }
+
+  .prize-supporting-line {
+    gap: 0.75rem;
+    margin: 1.5rem 0 1.85rem 0;
+  }
+
+  .laser-beam {
+    flex: 0 1 25px;
   }
 
   .stakes-text {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     letter-spacing: 0.16em;
-  }
-
-  .prize-meta-grid {
-    grid-template-columns: 1fr;
-    gap: 1.1rem;
-    padding-top: 1.4rem;
   }
 
   /* Rules & Rounds Cards */
