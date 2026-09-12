@@ -812,11 +812,11 @@ body {
   will-change: transform, opacity;
 }
 
-/* Hero Bottom Deck (Exact Image 3 Layout) */
+/* Hero Bottom Deck: Event Highlights Stat Card */
 .hero-bottom-deck {
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 2rem;
   width: 100%;
 }
@@ -1312,6 +1312,8 @@ body {
   background: radial-gradient(ellipse at center, rgba(8, 20, 42, 0.8) 0%, rgba(3, 7, 18, 0.95) 100%);
   border: 1px solid rgba(0, 210, 255, 0.3);
   box-shadow: 0 0 60px rgba(0, 210, 255, 0.12);
+  max-width: 860px;
+  margin: 0 auto;
 }
 
 .prize-card-corner {
@@ -1373,7 +1375,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 0;
 }
 
 .accent-dash {
@@ -1546,7 +1548,7 @@ body {
 
 .round-row-card {
   display: grid;
-  grid-template-columns: 140px 1fr 60px;
+  grid-template-columns: auto 1fr 60px;
   align-items: center;
   gap: 2.5rem;
   padding: 2.25rem 2.75rem;
@@ -1555,28 +1557,45 @@ body {
 
 .round-num-col {
   display: flex;
-  flex-direction: column;
+  align-items: center;
 }
 
-.round-prefix {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  color: var(--text-muted);
-}
-
-.round-big-num {
+.round-unified-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-heading);
-  font-size: 3.5rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #94a3b8;
+  white-space: nowrap;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 210, 255, 0.22);
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+  transition: all var(--transition-normal);
+}
+
+.round-unified-num {
+  font-family: var(--font-heading);
+  font-size: 1.22rem;
   font-weight: 800;
-  line-height: 0.9;
   color: #ffffff;
+  letter-spacing: 0.04em;
   transition: color var(--transition-fast), text-shadow var(--transition-fast);
 }
 
-.round-row-card:hover .round-big-num {
+.round-row-card:hover .round-unified-label {
+  border-color: rgba(0, 210, 255, 0.6);
+  background: rgba(0, 210, 255, 0.08);
+  box-shadow: 0 0 15px rgba(0, 210, 255, 0.18);
+  color: #ffffff;
+}
+
+.round-row-card:hover .round-unified-num {
   color: var(--primary-cyan);
-  text-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+  text-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
 }
 
 .round-info-col {
@@ -1873,11 +1892,13 @@ body {
 }
 
 .cta-card {
-  padding: 5.5rem 2rem;
+  padding: 5rem 2rem;
   position: relative;
   background: radial-gradient(circle at 50% 30%, rgba(10, 24, 52, 0.8) 0%, rgba(3, 7, 18, 0.95) 100%);
   border-color: rgba(0, 210, 255, 0.35);
   box-shadow: 0 0 60px rgba(0, 210, 255, 0.15);
+  max-width: 860px;
+  margin: 0 auto;
 }
 
 .cta-corner {
@@ -1913,7 +1934,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 0;
   flex-wrap: wrap;
 }
 
@@ -2644,12 +2665,16 @@ body {
   
   .round-num-col {
     flex-direction: row;
-    align-items: baseline;
-    gap: 0.6rem;
+    align-items: center;
   }
   
-  .round-big-num {
-    font-size: 2.4rem;
+  .round-unified-label {
+    font-size: 0.98rem;
+    padding: 0.45rem 0.95rem;
+  }
+
+  .round-unified-num {
+    font-size: 1.05rem;
   }
 
   .round-name {
@@ -2879,8 +2904,13 @@ body {
     border-radius: 14px;
   }
 
-  .round-big-num {
-    font-size: 2.1rem;
+  .round-unified-label {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.85rem;
+  }
+
+  .round-unified-num {
+    font-size: 0.98rem;
   }
 
   .round-name {
