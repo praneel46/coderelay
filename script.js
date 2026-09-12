@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initLiveCountdown();
   initScrollReveals();
   initPrizeCounter();
+  initCtaSection();
   initFaqAccordion();
   initRegistrationModal();
   initBackToTop();
@@ -234,21 +235,19 @@ function initScrollReveals() {
 }
 
 // ============================================================
+// ============================================================
 // REPEATING PRIZE POOL COUNT-UP ANIMATION
 // Triggers count-up on viewport enter; resets on leave to replay
 // ============================================================
 function initPrizeCounter() {
   const prizeCounter = document.getElementById("prizeCounter");
-  if (!prizeCounter) return;
+  const prizeSection = document.getElementById("prize");
+  if (!prizeCounter || !prizeSection) return;
 
   const targetAmount = 45000;
   let animId = null;
-  let hasCounted = false;
 
   function runCounter() {
-    if (hasCounted) return;
-    hasCounted = true;
-
     if (PREFERS_REDUCED_MOTION) {
       prizeCounter.textContent = targetAmount.toLocaleString("en-IN");
       return;
@@ -277,19 +276,59 @@ function initPrizeCounter() {
     animId = requestAnimationFrame(step);
   }
 
+  function resetCounter() {
+    if (animId) {
+      cancelAnimationFrame(animId);
+      animId = null;
+    }
+    if (!PREFERS_REDUCED_MOTION) {
+      prizeCounter.textContent = "0";
+    }
+  }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting && !hasCounted) {
+      if (entry.isIntersecting) {
         runCounter();
-        observer.unobserve(entry.target);
+      } else {
+        resetCounter();
       }
     });
   }, {
-    threshold: 0.2,
-    rootMargin: "0px 0px -30px 0px"
+    threshold: 0.15,
+    rootMargin: "0px 0px -40px 0px"
   });
 
-  observer.observe(prizeCounter);
+  observer.observe(prizeSection);
+}
+
+// ============================================================
+// REPEATING READY TO CODE RELAY ANIMATION
+// Staggered reveal sequence on viewport enter; resets on leave to replay
+// ============================================================
+function initCtaSection() {
+  const ctaSection = document.getElementById("register");
+  if (!ctaSection) return;
+
+  if (PREFERS_REDUCED_MOTION) {
+    ctaSection.classList.add("is-active");
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        ctaSection.classList.add("is-active");
+      } else {
+        ctaSection.classList.remove("is-active");
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: "0px 0px -40px 0px"
+  });
+
+  observer.observe(ctaSection);
 }
 
 // ============================================================
@@ -388,18 +427,35 @@ function initRegistrationModal() {
 
 // ============================================================
 // BACK TO TOP BUTTON
+// Hidden during main content, only appears when user reaches bottom sections
 // ============================================================
 function initBackToTop() {
   const backToTopBtn = document.getElementById("backToTopBtn");
+  const triggerSection = document.getElementById("register") || document.getElementById("contact");
   if (!backToTopBtn) return;
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 450) {
+  function updateVisibility() {
+    if (!triggerSection) {
+      if (window.scrollY > 1500) {
+        backToTopBtn.classList.add("is-visible");
+      } else {
+        backToTopBtn.classList.remove("is-visible");
+      }
+      return;
+    }
+
+    const rect = triggerSection.getBoundingClientRect();
+    // Reveals smoothly when the user reaches the final sections (CTA / Coordinators / Footer)
+    if (rect.top <= window.innerHeight * 0.75) {
       backToTopBtn.classList.add("is-visible");
     } else {
       backToTopBtn.classList.remove("is-visible");
     }
-  }, { passive: true });
+  }
+
+  window.addEventListener("scroll", updateVisibility, { passive: true });
+  window.addEventListener("resize", updateVisibility, { passive: true });
+  updateVisibility();
 
   backToTopBtn.addEventListener("click", () => {
     window.scrollTo({
