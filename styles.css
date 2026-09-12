@@ -612,6 +612,8 @@ body {
 .hero-section {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -865,7 +867,7 @@ body {
   text-transform: uppercase;
 }
 
-/* Right Glass Stat Pill Card (Exact Image 3 Pill) */
+/* Right Glass Stat Pill Card: Unified futuristic typography & entrance animation */
 .hero-stat-pill {
   display: flex;
   align-items: center;
@@ -876,12 +878,13 @@ body {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 24px;
+  font-family: var(--font-heading);
 }
 
 .hero-intro-stat {
   opacity: 0;
-  transform: translateY(24px);
-  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.04s forwards;
+  transform: translateY(25px);
+  animation: heroStatBoxEnter 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.88s forwards;
   will-change: transform, opacity;
 }
 
@@ -889,6 +892,22 @@ body {
   display: flex;
   align-items: baseline;
   gap: 0.75rem;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: heroStatColFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.stat-col:nth-child(1) {
+  animation-delay: 0.95s;
+}
+
+.stat-col:nth-child(3) {
+  animation-delay: 1.08s;
+}
+
+.stat-col:nth-child(5) {
+  animation-delay: 1.22s;
 }
 
 .stat-num {
@@ -897,6 +916,7 @@ body {
   font-weight: 800;
   color: #ffffff;
   line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 .stat-label-bold {
@@ -905,13 +925,15 @@ body {
   font-weight: 800;
   color: #ffffff;
   line-height: 1;
+  letter-spacing: -0.01em;
 }
 
 .stat-text {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 700;
   line-height: 1.25;
-  color: #94a3b8;
+  color: #cbd5e1;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -920,6 +942,48 @@ body {
   width: 1px;
   height: 32px;
   background: rgba(255, 255, 255, 0.15);
+  opacity: 0;
+  animation: heroStatDividerFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity;
+}
+
+.stat-divider:nth-child(2) {
+  animation-delay: 1.02s;
+}
+
+.stat-divider:nth-child(4) {
+  animation-delay: 1.15s;
+}
+
+@keyframes heroStatBoxEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroStatColFade {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroStatDividerFade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* ============================================================
@@ -2526,11 +2590,17 @@ body {
     display: none;
   }
 
-  /* Hero Mobile Composition */
+  /* Hero Mobile Composition: Full initial mobile viewport */
   .hero-section {
-    min-height: auto;
-    padding: 6.5rem 0 3.25rem 0;
-    justify-content: flex-start;
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
+    padding: 5.5rem 0 calc(2.25rem + env(safe-area-inset-bottom, 0px)) 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
   }
 
   .hero-inner-container {
@@ -2591,18 +2661,20 @@ body {
     width: 100%;
     max-width: 320px;
     margin-top: 0;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
 
-  /* Compact 3-column stats pill on mobile */
+  /* Compact 3-column stats pill on mobile with consistent typography & dividers */
   .hero-stat-pill {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: center;
     padding: 1rem 0.85rem;
-    gap: 0.5rem;
+    gap: 0.4rem;
     border-radius: 16px;
     text-align: center;
+    font-family: var(--font-heading);
   }
 
   .stat-col {
@@ -2612,23 +2684,37 @@ body {
   }
 
   .stat-num {
+    font-family: var(--font-heading);
     font-size: 1.45rem;
+    font-weight: 800;
     line-height: 1;
+    letter-spacing: -0.02em;
   }
 
   .stat-label-bold {
+    font-family: var(--font-heading);
     font-size: 1.15rem;
+    font-weight: 800;
     line-height: 1;
+    letter-spacing: -0.01em;
   }
 
   .stat-text {
+    font-family: var(--font-heading);
     font-size: 0.62rem;
-    letter-spacing: 0.05em;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
     text-align: center;
+    color: #cbd5e1;
+    text-transform: uppercase;
   }
 
   .stat-divider {
-    display: none;
+    display: block;
+    width: 1px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.15);
   }
 
   .countdown-grid {
@@ -2776,7 +2862,10 @@ body {
   }
 
   .hero-section {
-    padding: 5.75rem 0 2.75rem 0;
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
+    padding: 5.25rem 0 calc(2rem + env(safe-area-inset-bottom, 0px)) 0;
   }
 
   .hero-inner-container {
@@ -2809,24 +2898,35 @@ body {
 
   .hero-cta-group {
     max-width: 100%;
-    margin-bottom: 2.25rem;
+    margin-bottom: 2rem;
   }
 
   .hero-stat-pill {
     padding: 0.85rem 0.55rem;
     gap: 0.35rem;
+    font-family: var(--font-heading);
   }
 
   .stat-num {
+    font-family: var(--font-heading);
     font-size: 1.3rem;
   }
 
   .stat-label-bold {
-    font-size: 1rem;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
   }
 
   .stat-text {
-    font-size: 0.55rem;
+    font-family: var(--font-heading);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #cbd5e1;
+  }
+
+  .stat-divider {
+    height: 24px;
   }
 
   .about-title {
