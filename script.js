@@ -201,7 +201,9 @@ function initLiveCountdown() {
 }
 
 // ============================================================
-// SCROLL-TRIGGERED REVEAL ANIMATIONS
+// REPEATING SCROLL-TRIGGERED REVEAL ANIMATIONS
+// Every time a section/element enters viewport -> animates in
+// Every time it leaves viewport -> resets so it replays upon return
 // ============================================================
 function initScrollReveals() {
   if (PREFERS_REDUCED_MOTION) {
@@ -213,72 +215,82 @@ function initScrollReveals() {
 
   const revealElements = document.querySelectorAll(".reveal-up, .reveal-scale, .reveal-stagger");
 
-  const observer = new IntersectionObserver((entries, obs) => {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("is-revealed");
-        obs.unobserve(entry.target);
+      } else {
+        // Element left viewport: reset so entrance replays on scroll return
+        entry.target.classList.remove("is-revealed");
       }
     });
   }, {
     root: null,
-    threshold: 0.12,
-    rootMargin: "0px 0px -50px 0px"
+    threshold: 0.1,
+    rootMargin: "0px 0px -40px 0px"
   });
 
   revealElements.forEach((el) => observer.observe(el));
 }
 
 // ============================================================
-// PRIZE POOL COUNT-UP ANIMATION
+// REPEATING PRIZE POOL COUNT-UP ANIMATION
+// Triggers count-up on viewport enter; resets on leave to replay
 // ============================================================
 function initPrizeCounter() {
   const prizeCounter = document.getElementById("prizeCounter");
   if (!prizeCounter) return;
 
   const targetAmount = 45000;
-  let hasAnimated = false;
+  let animId = null;
+
+  function runCounter() {
+    if (PREFERS_REDUCED_MOTION) {
+      prizeCounter.textContent = targetAmount.toLocaleString("en-IN");
+      return;
+    }
+
+    if (animId) cancelAnimationFrame(animId);
+    const duration = 1400; // ms
+    const startTime = performance.now();
+
+    function step(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easeOutProgress = 1 - Math.pow(1 - progress, 3);
+      const currentVal = Math.floor(easeOutProgress * targetAmount);
+
+      prizeCounter.textContent = currentVal.toLocaleString("en-IN");
+
+      if (progress < 1) {
+        animId = requestAnimationFrame(step);
+      } else {
+        prizeCounter.textContent = targetAmount.toLocaleString("en-IN");
+        animId = null;
+      }
+    }
+
+    animId = requestAnimationFrame(step);
+  }
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting && !hasAnimated) {
-        hasAnimated = true;
-        animatePrizeCount(prizeCounter, targetAmount);
+      if (entry.isIntersecting) {
+        runCounter();
+      } else {
+        if (animId) {
+          cancelAnimationFrame(animId);
+          animId = null;
+        }
+        prizeCounter.textContent = "0";
       }
     });
-  }, { threshold: 0.25 });
+  }, {
+    threshold: 0.15,
+    rootMargin: "0px 0px -30px 0px"
+  });
 
   observer.observe(prizeCounter);
-}
-
-function animatePrizeCount(element, target) {
-  if (PREFERS_REDUCED_MOTION) {
-    element.textContent = target.toLocaleString("en-IN");
-    return;
-  }
-
-  // Sequence requested: ₹0 -> ₹10,000 -> ₹25,000 -> ₹45,000
-  const duration = 1800; // ms
-  const startTime = performance.now();
-
-  function step(currentTime) {
-    const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    
-    // Ease out cubic
-    const easeOutProgress = 1 - Math.pow(1 - progress, 3);
-    const currentVal = Math.floor(easeOutProgress * target);
-
-    element.textContent = currentVal.toLocaleString("en-IN");
-
-    if (progress < 1) {
-      requestAnimationFrame(step);
-    } else {
-      element.textContent = target.toLocaleString("en-IN");
-    }
-  }
-
-  requestAnimationFrame(step);
 }
 
 // ============================================================
@@ -409,6 +421,7 @@ function initHeroParallax() {
   if (!heroBg || !heroSection) return;
 
   window.addEventListener("scroll", () => {
+    if (window.innerWidth < 768) return;
     const scrollPos = window.scrollY;
     if (scrollPos <= heroSection.offsetHeight) {
       // Very subtle, smooth parallax translation without jumping
