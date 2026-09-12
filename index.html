@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VIDYANTRA 2026 // CODE RELAY. A competitive team-based programming event where participants use coding, logic, debugging, problem-solving and teamwork. 30 October 2026, SJBIT Bengaluru.">
+  <meta name="theme-color" content="#030712">
+  <title>VIDYANTRA 2026 // CODE RELAY — Think. Code. Debug. Relay.</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%2300d2ff'>⚡</text></svg>">
+
+  <!-- Google Fonts: Orbitron, Chakra Petch, Titillium Web & Montserrat (for sleek aerodynamic italic CODE RELAY & sci-fi wordmark branding), Space Grotesk, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,700;1,700;1,800;1,900&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:ital,wght@0,700;0,800;1,800;1,900&family=Orbitron:wght@700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Titillium+Web:ital,wght@0,600;0,700;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-dark text-light antialiased">
+
+  <!-- Top Announcement Bar / Micro-hud -->
+  <div class="hud-top-tracker" aria-hidden="true">
+    <div class="hud-line"></div>
+  </div>
+
+  <!-- NAVIGATION (Matches Image 3) -->
+  <header class="site-header" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" aria-label="Vidyantra 2026 Home">
+        <span class="brand-name">VIDYANTRA</span>
+        <span class="brand-year">2026</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#rounds" class="nav-link">ROUNDS</a></li>
+          <li><a href="#rules" class="nav-link">RULES</a></li>
+          <li><a href="#about" class="nav-link">ABOUT</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+          <li><a href="#contact" class="nav-link">CONTACT</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="btn-pill-nav btn-register" data-action="register">
+          <span>REGISTER NOW</span>
+          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+
+        <!-- Clean 3-Horizontal-Line Hamburger Button -->
+        <button type="button" class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg class="hamburger-svg" width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <line x1="1" y1="2" x2="17" y2="2"></line>
+            <line x1="1" y1="7" x2="17" y2="7"></line>
+            <line x1="1" y1="12" x2="17" y2="12"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE FULLSCREEN MENU OVERLAY (Scrollable on any screen height) -->
+  <div class="mobile-menu-overlay" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-backdrop"></div>
+    <div class="mobile-menu-content">
+      <div class="mobile-menu-header">
+        <div class="mobile-brand">
+          <span class="brand-name">VIDYANTRA</span>
+          <span class="brand-year">2026</span>
+          <span class="brand-edition text-cyan">CODE RELAY</span>
+        </div>
+        <button type="button" class="menu-close-btn" id="menuCloseBtn" aria-label="Close menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <nav class="mobile-nav-list" aria-label="Mobile Navigation Links">
+        <a href="#hero" class="mobile-link">
+          <span class="link-idx">00</span>
+          <span class="link-title">HOME</span>
+        </a>
+        <a href="#about" class="mobile-link">
+          <span class="link-idx">01</span>
+          <span class="link-title">ABOUT</span>
+        </a>
+        <a href="#rounds" class="mobile-link">
+          <span class="link-idx">02</span>
+          <span class="link-title">ROUNDS</span>
+        </a>
+        <a href="#rules" class="mobile-link">
+          <span class="link-idx">03</span>
+          <span class="link-title">RULES</span>
+        </a>
+        <a href="#faq" class="mobile-link">
+          <span class="link-idx">04</span>
+          <span class="link-title">FAQ</span>
+        </a>
+        <a href="#contact" class="mobile-link">
+          <span class="link-idx">05</span>
+          <span class="link-title">CONTACT</span>
+        </a>
+      </nav>
+
+      <div class="mobile-menu-footer">
+        <button type="button" class="btn-primary w-full btn-register" data-action="register">
+          <span>REGISTER NOW</span>
+          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+        <div class="mobile-meta">
+          <span>30 OCTOBER 2026</span>
+          <span class="dot-sep">•</span>
+          <span>SJBIT BENGALURU</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+    
+    <!-- ============================================================
+         HERO SECTION (MATCHES IMAGE 3 & SUPPLIED BACKGROUND)
+         ============================================================ -->
+    <section class="hero-section" id="hero">
+      <!-- Full-bleed landscape runners background (Current: assets/hero-bg-v3.jpg | Backups: assets/hero-bg-v2.jpg, assets/hero-bg-v1.jpg) -->
+      <div class="hero-media-wrapper" aria-hidden="true">
+        <img src="assets/hero-bg-v3.jpg?v=3" alt="Code Relay Runners" class="hero-bg-img" id="heroBgImg">
+        <div class="hero-overlay-gradient"></div>
+        <div class="hero-vignette"></div>
+      </div>
+
+      <div class="hero-inner-container">
+        
+        <!-- Hero Main Title Group (Matches Image 3 Futuristic Motorsport Styling) -->
+        <div class="hero-title-group">
+          <!-- Vidyantra Kicker matching Image 3 -->
+          <span class="hero-kicker">VIDYANTRA</span>
+
+          <h1 class="hero-title" aria-label="CODE RELAY">
+            <div class="title-line-mask">
+              <span class="title-code">CODE</span>
+            </div>
+            <div class="title-line-mask">
+              <span class="title-relay">RELAY</span>
+            </div>
+          </h1>
+        </div>
+
+        <!-- Tagline -->
+        <div class="hero-tagline-wrapper hero-intro-tagline">
+          <h2 class="hero-tagline">THINK. CODE. DEBUG. RELAY.</h2>
+        </div>
+
+        <!-- Supporting Description -->
+        <p class="hero-description hero-intro-desc">
+          A team-based programming challenge built around logic, coding, debugging and problem-solving.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-cta-group hero-intro-cta">
+          <button type="button" class="btn-primary btn-register" data-action="register">
+            <span>REGISTER NOW</span>
+            <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+          <a href="#rounds" class="btn-secondary">
+            <span>VIEW ROUNDS</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+        </div>
+
+        <!-- Hero Bottom Deck: Matches Image 3 Composition Exactly -->
+        <div class="hero-bottom-deck">
+          <!-- Left Label with Vertical Cyan Bar -->
+          <div class="hero-origin hero-intro-origin">
+            <div class="origin-bar"></div>
+            <div class="origin-content">
+              <span class="origin-label">A TECHNICAL EVENT</span>
+              <span class="origin-brand">BY VIDYANTRA</span>
+            </div>
+          </div>
+
+          <!-- Right Glass Stat Card (Matches Image 3) -->
+          <div class="hero-stat-pill glass-panel hero-intro-stat">
+            <div class="stat-col">
+              <span class="stat-num">03</span>
+              <span class="stat-text">MEMBERS<br>PER TEAM</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-col">
+              <span class="stat-num">04</span>
+              <span class="stat-text">EVENT<br>ROUNDS</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-col">
+              <span class="stat-label-bold">TEAM</span>
+              <span class="stat-text">COMPETITION</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <a href="#countdown" class="scroll-down-indicator" aria-label="Scroll to Countdown">
+        <span class="mouse-icon">
+          <span class="mouse-wheel"></span>
+        </span>
+      </a>
+    </section>
+
+    <!-- ============================================================
+         EVENT TIMER SECTION
+         ============================================================ -->
+    <section class="section-container countdown-section" id="countdown">
+      <div class="section-bg-elements" aria-hidden="true">
+        <div class="glow-orb orb-blue"></div>
+      </div>
+
+      <div class="container">
+        <div class="section-header text-center reveal-up">
+          <div class="section-tag">// 01 &bull; TIME MATRIX //</div>
+          <h2 class="section-title">THE COUNTDOWN</h2>
+          <p class="section-subtitle">UNTIL <span class="text-cyan">CODE RELAY</span></p>
+        </div>
+
+        <!-- Live Countdown Cards Grid -->
+        <div class="countdown-grid reveal-scale" id="liveCountdown" data-target="2026-10-30T09:00:00+05:30">
+          
+          <div class="timer-card glass-panel">
+            <div class="timer-corner-tl"></div>
+            <div class="timer-corner-br"></div>
+            <div class="timer-digits-box">
+              <span class="timer-digit" id="timerDays">47</span>
+            </div>
+            <div class="timer-label">DAYS</div>
+            <div class="timer-sub">REMAINING</div>
+          </div>
+
+          <div class="timer-card glass-panel">
+            <div class="timer-corner-tl"></div>
+            <div class="timer-corner-br"></div>
+            <div class="timer-digits-box">
+              <span class="timer-digit" id="timerHours">14</span>
+            </div>
+            <div class="timer-label">HOURS</div>
+            <div class="timer-sub">ESTIMATED</div>
+          </div>
+
+          <div class="timer-card glass-panel">
+            <div class="timer-corner-tl"></div>
+            <div class="timer-corner-br"></div>
+            <div class="timer-digits-box">
+              <span class="timer-digit" id="timerMinutes">42</span>
+            </div>
+            <div class="timer-label">MINUTES</div>
+            <div class="timer-sub">PRECISION</div>
+          </div>
+
+          <div class="timer-card glass-panel active-second-card">
+            <div class="timer-corner-tl"></div>
+            <div class="timer-corner-br"></div>
+            <div class="timer-digits-box">
+              <span class="timer-digit pulse-accent" id="timerSeconds">18</span>
+            </div>
+            <div class="timer-label">SECONDS</div>
+            <div class="timer-sub">LIVE SYNC</div>
+          </div>
+
+        </div>
+
+        <div class="timer-footer text-center reveal-up">
+          <div class="timer-status-pill">
+            <span class="status-dot-pulse"></span>
+            <span class="status-msg">TARGET DATE: 30 OCTOBER 2026 &bull; SJBIT BENGALURU</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         WHAT IS CODE RELAY? (INFORMATION-FIRST EDITORIAL SECTION)
+         ============================================================ -->
+    <section class="section-container about-section" id="about">
+      <div class="container">
+        
+        <div class="about-editorial-wrap">
+          
+          <!-- Top Row: Section Tag & Editorial Header with Short Description -->
+          <div class="about-header-group reveal-up">
+            <div class="section-tag">// 02 &bull; EVENT OVERVIEW //</div>
+            <h2 class="about-title">
+              WHAT IS<br><span class="text-cyan-accent">CODE RELAY?</span>
+            </h2>
+            <p class="about-lead">
+              Code Relay is a team-based programming challenge where three members combine technical knowledge, logical thinking, debugging ability and problem-solving skills to progress through multiple challenges.
+            </p>
+          </div>
+
+          <!-- Key Characteristics Sequence: Clean Minimal Horizontal Rows with Thin Dividers -->
+          <div class="about-sequence reveal-stagger">
+            
+            <!-- Item 01: TEAMWORK -->
+            <div class="sequence-row">
+              <div class="seq-num">01</div>
+              <div class="seq-content">
+                <h3 class="seq-title">TEAMWORK</h3>
+                <p class="seq-desc">Work together, combine individual strengths and keep the team moving forward.</p>
+              </div>
+            </div>
+            <div class="seq-divider"></div>
+
+            <!-- Item 02: SPEED & PRECISION -->
+            <div class="sequence-row">
+              <div class="seq-num">02</div>
+              <div class="seq-content">
+                <h3 class="seq-title">SPEED &amp; PRECISION</h3>
+                <p class="seq-desc">Think quickly, make accurate decisions and perform under time pressure.</p>
+              </div>
+            </div>
+            <div class="seq-divider"></div>
+
+            <!-- Item 03: PROBLEM SOLVING -->
+            <div class="sequence-row">
+              <div class="seq-num">03</div>
+              <div class="seq-content">
+                <h3 class="seq-title">PROBLEM SOLVING</h3>
+                <p class="seq-desc">Analyse challenges, identify problems and develop effective solutions.</p>
+              </div>
+            </div>
+            <div class="seq-divider"></div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PRIZE POOL SECTION
+         ============================================================ -->
+    <section class="section-container prize-section" id="prize">
+      <div class="section-bg-elements" aria-hidden="true">
+        <div class="glow-orb orb-orange"></div>
+        <div class="glow-orb orb-cyan"></div>
+      </div>
+
+      <div class="container">
+        <div class="prize-card-wrapper glass-panel reveal-scale">
+          <div class="prize-card-corner tl"></div>
+          <div class="prize-card-corner tr"></div>
+          <div class="prize-card-corner bl"></div>
+          <div class="prize-card-corner br"></div>
+
+          <div class="prize-header reveal-up">
+            <span class="section-tag">// 03 &bull; REWARDS //</span>
+            <h2 class="prize-title">PRIZE <span class="text-cyan">POOL</span></h2>
+          </div>
+
+          <div class="prize-amount-display">
+            <span class="currency-symbol">&#8377;</span>
+            <span class="prize-counter" id="prizeCounter" data-target="45000">45,000</span>
+          </div>
+
+          <div class="prize-supporting-line reveal-up">
+            <span class="accent-dash"></span>
+            <p class="stakes-text">THE STAKES ARE SET.</p>
+            <span class="accent-dash"></span>
+          </div>
+
+          <div class="prize-meta-grid reveal-stagger">
+            <div class="prize-meta-box">
+              <span class="meta-title">POOL INTEGRITY</span>
+              <span class="meta-desc">Guaranteed Reward Matrix</span>
+            </div>
+            <div class="prize-meta-box">
+              <span class="meta-title">DISTRIBUTION</span>
+              <span class="meta-desc">Tiered Based on Registered Teams</span>
+            </div>
+            <div class="prize-meta-box">
+              <span class="meta-title">RECOGNITION</span>
+              <span class="meta-desc">Champion Accolades &amp; Honors</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         GENERAL RULES SECTION
+         ============================================================ -->
+    <section class="section-container rules-section" id="rules">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <div class="section-tag">// 04 &bull; OFFICIAL REGULATIONS //</div>
+          <h2 class="section-title">GENERAL RULES</h2>
+          <p class="section-subtitle">Follow competition protocol for fair and seamless execution.</p>
+        </div>
+
+        <div class="rules-grid reveal-stagger">
+          
+          <!-- Rule 01 -->
+          <article class="rule-card glass-panel">
+            <div class="rule-card-header">
+              <span class="rule-index">01</span>
+              <div class="rule-status-dot"></div>
+            </div>
+            <h3 class="rule-title">TEAM COMPOSITION</h3>
+            <p class="rule-desc">
+              Each team must consist of exactly 3 members. Members may be from different colleges, and the same members must remain throughout all rounds.
+            </p>
+          </article>
+
+          <!-- Rule 02 -->
+          <article class="rule-card glass-panel">
+            <div class="rule-card-header">
+              <span class="rule-index">02</span>
+              <div class="rule-status-dot"></div>
+            </div>
+            <h3 class="rule-title">TEAM ID</h3>
+            <p class="rule-desc">
+              Each team will be assigned a unique Team ID, which must be used throughout the event for identification and submissions.
+            </p>
+          </article>
+
+          <!-- Rule 03 -->
+          <article class="rule-card glass-panel">
+            <div class="rule-card-header">
+              <span class="rule-index">03</span>
+              <div class="rule-status-dot"></div>
+            </div>
+            <h3 class="rule-title">REPORTING &amp; CONDUCT</h3>
+            <p class="rule-desc">
+              Participants must report before the scheduled time and follow the instructions of the event coordinators, judges, and technical team. Professional and respectful conduct is expected throughout the event.
+            </p>
+          </article>
+
+          <!-- Rule 04 -->
+          <article class="rule-card glass-panel">
+            <div class="rule-card-header">
+              <span class="rule-index">04</span>
+              <div class="rule-status-dot"></div>
+            </div>
+            <h3 class="rule-title">PERMITTED RESOURCES</h3>
+            <p class="rule-desc">
+              Participants may use only the resources, devices, software, and environment permitted for each round. Unauthorized websites, applications, external assistance, or resources are prohibited.
+            </p>
+          </article>
+
+          <!-- Rule 05 -->
+          <article class="rule-card glass-panel">
+            <div class="rule-card-header">
+              <span class="rule-index">05</span>
+              <div class="rule-status-dot"></div>
+            </div>
+            <h3 class="rule-title">FAIR PLAY</h3>
+            <p class="rule-desc">
+              Sharing or copying code, answers, solutions, or receiving assistance from other teams, spectators, or unauthorized sources is strictly prohibited. Any attempt to manipulate the platform, timer, scores, or submissions may lead to disqualification.
+            </p>
+          </article>
+
+          <!-- Rule 06 -->
+          <article class="rule-card glass-panel">
+            <div class="rule-card-header">
+              <span class="rule-index">06</span>
+              <div class="rule-status-dot"></div>
+            </div>
+            <h3 class="rule-title">SUBMISSIONS &amp; TECHNICAL ISSUES</h3>
+            <p class="rule-desc">
+              All submissions must be completed within the specified time limit. Late submissions will not be considered. Genuine technical issues must be reported immediately to the technical team.
+            </p>
+          </article>
+
+          <!-- Rule 07 -->
+          <article class="rule-card glass-panel">
+            <div class="rule-card-header">
+              <span class="rule-index">07</span>
+              <div class="rule-status-dot"></div>
+            </div>
+            <h3 class="rule-title">SCORING &amp; DECISIONS</h3>
+            <p class="rule-desc">
+              Official submissions, timestamps, and system records will be used for scoring and verification. The decision of the authorized judging/event committee regarding scoring, qualification, and disqualification will be final.
+            </p>
+          </article>
+
+          <!-- Rule 08 -->
+          <article class="rule-card glass-panel rule-featured">
+            <div class="rule-card-header">
+              <span class="rule-index">08</span>
+              <div class="rule-badge-special">DISTRIBUTION</div>
+            </div>
+            <h3 class="rule-title">PRIZE DISTRIBUTION</h3>
+            <p class="rule-desc">
+              Prize distribution will depend on the number of registered teams:
+            </p>
+            <div class="rule-tiers">
+              <div class="tier-row">
+                <span class="tier-label">Fewer than 15 teams:</span>
+                <span class="tier-val">First Place only</span>
+              </div>
+              <div class="tier-row">
+                <span class="tier-label">20+ teams:</span>
+                <span class="tier-val">First &amp; Second Place</span>
+              </div>
+              <div class="tier-row">
+                <span class="tier-label">30+ teams:</span>
+                <span class="tier-val">First, Second &amp; Third Place</span>
+              </div>
+            </div>
+            <p class="rule-subnote">
+              The organizing committee may make necessary changes to the schedule or competition procedure due to technical or logistical circumstances.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         EVENT ROUNDS SECTION
+         ============================================================ -->
+    <section class="section-container rounds-section" id="rounds">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <div class="section-tag">// 05 &bull; PROGRESSION SYSTEM //</div>
+          <h2 class="section-title">EVENT ROUNDS</h2>
+          <p class="section-subtitle">Four distinct stages designed to evaluate every aspect of competitive software engineering.</p>
+        </div>
+
+        <div class="rounds-list reveal-stagger">
+          
+          <!-- Round 01 -->
+          <div class="round-row-card glass-panel">
+            <div class="round-num-col">
+              <span class="round-prefix">ROUND</span>
+              <span class="round-big-num">01</span>
+            </div>
+            <div class="round-info-col">
+              <div class="round-title-row">
+                <h3 class="round-name">CODE IQ</h3>
+                <span class="round-status-pill">STAGE 1</span>
+              </div>
+              <p class="round-desc">
+                A fast-paced technical challenge where teams put their programming logic and code comprehension to the test. Participants will face a series of timed questions that require quick thinking, careful observation, and accurate decision-making.
+              </p>
+            </div>
+            <div class="round-arrow-col">
+              <div class="round-arrow-circle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Round 02 -->
+          <div class="round-row-card glass-panel">
+            <div class="round-num-col">
+              <span class="round-prefix">ROUND</span>
+              <span class="round-big-num">02</span>
+            </div>
+            <div class="round-info-col">
+              <div class="round-title-row">
+                <h3 class="round-name">TRIPLE STRIKE</h3>
+                <span class="round-status-pill">STAGE 2</span>
+              </div>
+              <p class="round-desc">
+                A team-based challenge where the three members take on different programming tasks and combine their strengths to move forward. Each participant will face a distinct challenge, making teamwork, individual skill, and smart decision-making essential to completing the round.
+              </p>
+            </div>
+            <div class="round-arrow-col">
+              <div class="round-arrow-circle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Round 03 -->
+          <div class="round-row-card glass-panel round-mystery">
+            <div class="round-num-col">
+              <span class="round-prefix">ROUND</span>
+              <span class="round-big-num">03</span>
+            </div>
+            <div class="round-info-col">
+              <div class="round-title-row">
+                <h3 class="round-name">ROUND 03</h3>
+                <span class="round-status-pill pill-classified">CLASSIFIED</span>
+              </div>
+              <p class="round-desc">
+                Details will be announced during the event.
+              </p>
+            </div>
+            <div class="round-arrow-col">
+              <div class="round-arrow-circle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Round 04 -->
+          <div class="round-row-card glass-panel round-final">
+            <div class="round-num-col">
+              <span class="round-prefix">ROUND</span>
+              <span class="round-big-num">04</span>
+            </div>
+            <div class="round-info-col">
+              <div class="round-title-row">
+                <h3 class="round-name">THE FINAL RELAY</h3>
+                <span class="round-status-pill pill-champion">FINAL STAGE</span>
+              </div>
+              <p class="round-desc">
+                The ultimate team challenge where the solution is passed from one teammate to the next. Each member must understand the existing work, continue from where their teammate left off, and contribute towards completing the final solution. Team coordination, adaptability, and speed will be key to reaching the finish.
+              </p>
+            </div>
+            <div class="round-arrow-col">
+              <div class="round-arrow-circle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         THE CODE RELAY EXPERIENCE SECTION
+         ============================================================ -->
+    <section class="section-container experience-section" id="experience">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <div class="section-tag">// 06 &bull; DYNAMICS //</div>
+          <h2 class="section-title">THE CODE RELAY EXPERIENCE</h2>
+          <p class="section-subtitle">Three pillars of competitive excellence defining the tournament lifecycle.</p>
+        </div>
+
+        <div class="experience-grid reveal-stagger">
+          
+          <!-- Card 1: THINK -->
+          <div class="experience-card glass-panel">
+            <div class="exp-media-box">
+              <img src="assets/think.jpg" alt="Team members analyzing logic and architecture" class="exp-img" loading="lazy">
+              <div class="exp-media-overlay"></div>
+              <span class="exp-step-badge">STEP 01</span>
+            </div>
+            <div class="exp-content">
+              <h3 class="exp-title">THINK</h3>
+              <p class="exp-desc">
+                Break down problems, identify patterns and choose the right approach.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2: CODE -->
+          <div class="experience-card glass-panel">
+            <div class="exp-media-box">
+              <img src="assets/code.jpg" alt="Writing high-efficiency code on terminal screen" class="exp-img" loading="lazy">
+              <div class="exp-media-overlay"></div>
+              <span class="exp-step-badge">STEP 02</span>
+            </div>
+            <div class="exp-content">
+              <h3 class="exp-title">CODE</h3>
+              <p class="exp-desc">
+                Apply programming knowledge and technical thinking under pressure.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3: RELAY -->
+          <div class="experience-card glass-panel">
+            <div class="exp-media-box">
+              <img src="assets/relay.jpg" alt="Collaborative team passing code relay baton" class="exp-img" loading="lazy">
+              <div class="exp-media-overlay"></div>
+              <span class="exp-step-badge">STEP 03</span>
+            </div>
+            <div class="exp-content">
+              <h3 class="exp-title">RELAY</h3>
+              <p class="exp-desc">
+                Build on your teammate's work and keep the solution moving.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         WHY CODE RELAY? SECTION
+         ============================================================ -->
+    <section class="section-container why-section" id="why">
+      <div class="container">
+        <div class="section-header reveal-up">
+          <div class="section-tag">// 07 &bull; CORE VALUES //</div>
+          <h2 class="section-title">WHY <span class="text-cyan">CODE RELAY?</span></h2>
+          <p class="section-subtitle">Beyond individual coding speed — engineered to test real engineering dynamics.</p>
+        </div>
+
+        <div class="why-grid reveal-stagger">
+          
+          <div class="why-card glass-panel">
+            <div class="why-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+            </div>
+            <h3 class="why-title">LOGIC</h3>
+            <p class="why-desc">Strengthen analytical thinking and problem-solving skills.</p>
+          </div>
+
+          <div class="why-card glass-panel">
+            <div class="why-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </div>
+            <h3 class="why-title">CODING</h3>
+            <p class="why-desc">Put programming knowledge into practical competitive challenges.</p>
+          </div>
+
+          <div class="why-card glass-panel">
+            <div class="why-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h3 class="why-title">TEAMWORK</h3>
+            <p class="why-desc">Combine individual strengths and make decisions together.</p>
+          </div>
+
+          <div class="why-card glass-panel">
+            <div class="why-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            </div>
+            <h3 class="why-title">ADAPTABILITY</h3>
+            <p class="why-desc">Respond quickly, understand new problems and continue the solution.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FREQUENTLY ASKED QUESTIONS (FAQ) SECTION
+         ============================================================ -->
+    <section class="section-container faq-section" id="faq">
+      <div class="container">
+        <div class="section-header text-center reveal-up">
+          <div class="section-tag">// 08 &bull; INQUIRIES //</div>
+          <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
+          <p class="section-subtitle">Everything you need to know about participating in Code Relay.</p>
+        </div>
+
+        <div class="faq-accordion reveal-stagger">
+          
+          <!-- Item 01 -->
+          <div class="faq-item glass-panel">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span class="faq-index">01</span>
+              <span class="faq-question">How many members can be in a team?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner">
+                <p>Each team must consist of exactly 3 members.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 02 -->
+          <div class="faq-item glass-panel">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span class="faq-index">02</span>
+              <span class="faq-question">Can members from different colleges form a team?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner">
+                <p>Yes. Teams may be formed with members from different colleges.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 03 -->
+          <div class="faq-item glass-panel">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span class="faq-index">03</span>
+              <span class="faq-question">Can team members be changed after registration?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner">
+                <p>No. The same team members must remain throughout the event.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 04 -->
+          <div class="faq-item glass-panel">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span class="faq-index">04</span>
+              <span class="faq-question">When is Code Relay?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner">
+                <p>Code Relay will be held on 30 October 2026.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 05 -->
+          <div class="faq-item glass-panel">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span class="faq-index">05</span>
+              <span class="faq-question">How many rounds are there?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner">
+                <p>The event consists of 4 rounds.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 06 -->
+          <div class="faq-item glass-panel">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span class="faq-index">06</span>
+              <span class="faq-question">Do we need to know the exact round procedure beforehand?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner">
+                <p>Detailed procedures and round-specific instructions will be announced by the organizers at the appropriate stage of the event.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 07 -->
+          <div class="faq-item glass-panel">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span class="faq-index">07</span>
+              <span class="faq-question">What should participants prepare?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner">
+                <p>Participants should prepare programming fundamentals, logical reasoning, code comprehension, debugging, problem-solving and teamwork.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 08 -->
+          <div class="faq-item glass-panel">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span class="faq-index">08</span>
+              <span class="faq-question">How much is the prize pool?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner">
+                <p>The total prize pool is &#8377;45,000.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 09 -->
+          <div class="faq-item glass-panel">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span class="faq-index">09</span>
+              <span class="faq-question">Can we use external resources during the event?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner">
+                <p>Only resources, devices, software and environments permitted by the organizers may be used.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 10 -->
+          <div class="faq-item glass-panel">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span class="faq-index">10</span>
+              <span class="faq-question">What happens if we face a technical issue?</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
+            </button>
+            <div class="faq-content">
+              <div class="faq-inner">
+                <p>Report genuine technical issues immediately to the technical team.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         READY TO REGISTER (CTA SECTION)
+         ============================================================ -->
+    <section class="section-container cta-section" id="register">
+      <div class="cta-backdrop-glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="cta-card glass-panel reveal-scale">
+          <div class="cta-corner tl"></div>
+          <div class="cta-corner tr"></div>
+          <div class="cta-corner bl"></div>
+          <div class="cta-corner br"></div>
+
+          <div class="cta-inner text-center">
+            <div class="section-tag">// 09 &bull; ENLISTMENT //</div>
+            <h2 class="cta-title">
+              READY TO<br><span class="text-cyan-glow">RELAY?</span>
+            </h2>
+            <p class="cta-lead">
+              &quot;Bring your team. Bring your logic. Get ready to compete.&quot;
+            </p>
+
+            <div class="cta-actions">
+              <button type="button" class="btn-primary btn-register" data-action="register">
+                <span>REGISTER NOW</span>
+                <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </button>
+              <a href="#rules" class="btn-secondary">
+                <span>VIEW RULES</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+            </div>
+
+            <div class="cta-specs-row">
+              <div class="spec-item">
+                <span class="spec-val">3 MEMBERS</span>
+                <span class="spec-lbl">TEAM FORMATION</span>
+              </div>
+              <div class="spec-sep">•</div>
+              <div class="spec-item">
+                <span class="spec-val">4 ROUNDS</span>
+                <span class="spec-lbl">CHALLENGE TIERS</span>
+              </div>
+              <div class="spec-sep">•</div>
+              <div class="spec-item">
+                <span class="spec-val">&#8377;45,000</span>
+                <span class="spec-lbl">TOTAL PRIZE POOL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         EVENT COORDINATORS & LOCATION SECTION
+         ============================================================ -->
+    <section class="section-container contact-section" id="contact">
+      <div class="container">
+        
+        <!-- Coordinators with Real Photographs & PK / KS Badges -->
+        <div class="section-header reveal-up">
+          <div class="section-tag">// 10 &bull; DIRECT CONTACT //</div>
+          <h2 class="section-title">EVENT COORDINATORS</h2>
+          <p class="section-subtitle">Reach out directly to the coordinators for queries regarding registration or event protocol.</p>
+        </div>
+
+        <div class="coordinators-grid reveal-stagger">
+          
+          <!-- Coordinator 1: Praneel Kulkarni (Image 4) -->
+          <div class="coordinator-card glass-panel">
+            <div class="coord-photo-wrapper">
+              <img src="assets/praneel-kulkarni.png" alt="Praneel Kulkarni" class="coord-real-photo" loading="lazy">
+              <div class="coord-id-badge">PK</div>
+            </div>
+            <div class="coord-details">
+              <span class="coord-role">EVENT COORDINATOR</span>
+              <h3 class="coord-name">PRANEEL KULKARNI</h3>
+              <a href="tel:8660276040" class="coord-phone-link" aria-label="Call Praneel Kulkarni at 8660276040">
+                <svg class="phone-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span>8660276040</span>
+              </a>
+            </div>
+            <div class="coord-action">
+              <a href="tel:8660276040" class="btn-call-icon" aria-label="Call Praneel Kulkarni">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Coordinator 2: Keshav Savanth S (Image 5) -->
+          <div class="coordinator-card glass-panel">
+            <div class="coord-photo-wrapper">
+              <img src="assets/keshav-sawal.png" alt="Keshav Savanth S" class="coord-real-photo" loading="lazy">
+              <div class="coord-id-badge">KS</div>
+            </div>
+            <div class="coord-details">
+              <span class="coord-role">EVENT COORDINATOR</span>
+              <h3 class="coord-name">KESHAV SAVANTH S</h3>
+              <a href="tel:7892586349" class="coord-phone-link" aria-label="Call Keshav Savanth S at 7892586349">
+                <svg class="phone-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span>78925 86349</span>
+              </a>
+            </div>
+            <div class="coord-action">
+              <a href="tel:7892586349" class="btn-call-icon" aria-label="Call Keshav Savanth S">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Location Box: SJBIT Bengaluru with Exact Supplied Google Maps Link -->
+        <div class="location-box glass-panel reveal-scale">
+          <div class="location-content">
+            <div class="location-tag">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>OFFICIAL VENUE</span>
+            </div>
+            <h3 class="location-city">SJBIT BENGALURU</h3>
+            <p class="location-desc">Karnataka, India &bull; Edition: Vidyantra 2026 &bull; 30 October 2026</p>
+          </div>
+          <div class="location-action">
+            <a href="https://maps.app.goo.gl/QiuL3xpsD7bW8qEP6?g_st=ac" target="_blank" rel="noopener noreferrer" class="btn-map" id="viewMapBtn" aria-label="Open SJBIT Bengaluru on Google Maps">
+              <span>VIEW ON MAP</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER SECTION
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-row">
+        
+        <div class="footer-brand-col">
+          <div class="footer-brand">
+            <span class="footer-logo"><span class="brand-name">VIDYANTRA</span> <span class="brand-year">2026</span></span>
+            <span class="footer-sublogo">CODE RELAY</span>
+          </div>
+          <p class="footer-tagline">THINK. CODE. DEBUG. RELAY.</p>
+        </div>
+
+        <div class="footer-nav-col">
+          <h4 class="footer-col-title">NAVIGATION</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#rounds">ROUNDS</a></li>
+            <li><a href="#rules">RULES</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+            <li><a href="#register" class="btn-register" data-action="register">REGISTER</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-loc-col">
+          <h4 class="footer-col-title">LOCATION</h4>
+          <p class="footer-loc-name">SJBIT BENGALURU</p>
+          <p class="footer-loc-country">Karnataka, India</p>
+          <a href="https://maps.app.goo.gl/QiuL3xpsD7bW8qEP6?g_st=ac" target="_blank" rel="noopener noreferrer" class="footer-map-link" aria-label="View SJBIT Bengaluru on Google Maps">
+            <span>VIEW MAP</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom-row">
+        <div class="copyright-text">
+          &copy; 2026 Vidyantra. All rights reserved.
+        </div>
+        <div class="footer-signature">
+          CODE RELAY &bull; 30 OCTOBER 2026 &bull; SJBIT BENGALURU
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       BACK TO TOP BUTTON
+       ============================================================ -->
+  <button type="button" class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top">
+    <span class="back-to-top-text">BACK TO TOP</span>
+    <span class="back-to-top-arrow">&uarr;</span>
+  </button>
+
+  <!-- ============================================================
+       REGISTRATION MODAL / NOTICE POPUP
+       ============================================================ -->
+  <div class="modal-overlay" id="registrationModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-card glass-panel">
+      <div class="modal-corner tl"></div>
+      <div class="modal-corner tr"></div>
+      <div class="modal-corner bl"></div>
+      <div class="modal-corner br"></div>
+
+      <div class="modal-icon-badge">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+      </div>
+
+      <div class="modal-content text-center">
+        <div class="modal-tag">// OFFICIAL NOTICE //</div>
+        <h3 class="modal-title" id="modalTitle">REGISTRATION FORM COMING SOON</h3>
+        <p class="modal-desc">
+          Registration will open shortly. The official registration form will be linked here once it is available.
+        </p>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-primary w-full" id="modalCloseBtn">
+          <span>OKAY</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
