@@ -2596,10 +2596,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2.25rem 2.75rem;
+  padding: 2.5rem 2.75rem;
   background: rgba(6, 12, 24, 0.75);
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 2rem;
+}
+
+.location-content {
+  flex: 1 1 520px;
 }
 
 .location-tag {
@@ -2610,20 +2614,31 @@ body {
   font-size: 0.75rem;
   letter-spacing: 0.15em;
   color: var(--primary-cyan);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.45rem;
 }
 
 .location-city {
   font-family: var(--font-heading);
-  font-size: 2rem;
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
   font-weight: 800;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   color: #ffffff;
+  line-height: 1.15;
+}
+
+.location-address {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin: 0.5rem 0 0.6rem 0;
+  max-width: 650px;
 }
 
 .location-desc {
-  font-size: 0.95rem;
-  color: #cbd5e1;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--primary-cyan);
 }
 
 .btn-map {
@@ -3540,8 +3555,17 @@ body {
   }
 
   .location-box {
-    padding: 1.35rem 1.1rem;
-    gap: 1rem;
+    padding: 1.5rem 1.15rem;
+    gap: 1.25rem;
+  }
+
+  .location-city {
+    font-size: 1.25rem;
+  }
+
+  .location-address {
+    font-size: 0.88rem;
+    line-height: 1.5;
   }
 
   .btn-map {
