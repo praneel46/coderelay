@@ -1,5 +1,5 @@
 /* ============================================================
-   VIDYANTRA 2026 // CODE RELAY — PRIMARY STYLESHEET
+   VIGYANTRA 2026 // CODE RELAY — PRIMARY STYLESHEET
    Refined Cinematic, Futuristic Editorial Experience
    ============================================================ */
 
@@ -218,7 +218,7 @@ body {
   justify-content: space-between;
 }
 
-/* Brand Logo (VIDYANTRA 2026 Custom Sci-Fi Wordmark Matching Image 3) */
+/* Brand Logo (VIGYANTRA 2026 Custom Sci-Fi Wordmark Matching Image 3) */
 .brand-logo {
   display: flex;
   align-items: center;
@@ -680,7 +680,7 @@ body {
   width: fit-content;
 }
 
-/* Vidyantra Kicker matching reference Image 3 */
+/* Vigyantra Kicker matching reference Image 3 */
 .hero-kicker {
   display: inline-block;
   font-family: var(--font-heading);

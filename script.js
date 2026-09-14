@@ -1,5 +1,5 @@
 /**
- * VIDYANTRA 2026 // CODE RELAY
+ * VIGYANTRA 2026 // CODE RELAY
  * High-Performance Interactive Frontend Script
  * Handles:
  * - Live Event Countdown with Digit Animations
