@@ -19,10 +19,10 @@
 // ============================================================
 
 /**
- * Replace with the official Google Form URL once registration opens.
- * When empty, all 'Register' buttons trigger the high-tech notification modal.
+ * Official Google Registration Form URL.
+ * When set, all 'Register' buttons navigate directly to this form in a new tab.
  */
-const REGISTRATION_FORM_URL = "";
+const REGISTRATION_FORM_URL = "https://forms.gle/4nJnwdTaFTGTXExS9";
 
 /**
  * Target Event Date: 30 October 2026 (09:00:00 IST)
@@ -383,15 +383,20 @@ function initRegistrationModal() {
   const modalBackdrop = document.getElementById("modalBackdrop");
 
   function handleRegisterClick(e) {
-    e.preventDefault();
-
-    // If a Google Form URL is provided, navigate directly to it
+    // If a Google Form URL is provided, open it securely in a new tab
     if (REGISTRATION_FORM_URL && REGISTRATION_FORM_URL.trim() !== "") {
+      const link = e.currentTarget.tagName.toLowerCase() === "a" ? e.currentTarget : e.currentTarget.closest("a");
+      if (link && link.getAttribute("href") === REGISTRATION_FORM_URL) {
+        // Native <a> tag opens in new tab with target="_blank" and rel="noopener noreferrer"
+        return;
+      }
+      e.preventDefault();
       window.open(REGISTRATION_FORM_URL, "_blank", "noopener,noreferrer");
       return;
     }
 
     // Otherwise show the official Coming Soon notice modal
+    e.preventDefault();
     openModal();
   }
 
