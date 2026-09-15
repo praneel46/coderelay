@@ -122,14 +122,38 @@
          HERO SECTION (MATCHES IMAGE 3 & SUPPLIED BACKGROUND)
          ============================================================ -->
     <section class="hero-section" id="hero">
-      <!-- Full-bleed landscape runners background (Current: assets/hero-bg-v3.jpg | Backups: assets/hero-bg-v2.jpg, assets/hero-bg-v1.jpg) -->
+      <!-- Cinematic Multi-Layer Composition (Layers 1-7) -->
       <div class="hero-media-wrapper" aria-hidden="true">
+        <!-- Layer 1: Core Cinematic Artwork (City, Skyline, Runners, Glowing Track) -->
         <img src="assets/hero-bg-v3.jpg?v=3" alt="Code Relay Runners" class="hero-bg-img" id="heroBgImg">
+        <!-- Layer 4: Atmospheric Cyan/Blue Haze & Warm City Glow Accent -->
+        <div class="hero-haze-ambient"></div>
+        <!-- Layer 7: Faint Digital Grid Texture -->
+        <div class="hero-tech-grid"></div>
+        <!-- Layer 5: Very Subtle Floating Digital Particles -->
+        <div class="hero-particles">
+          <span class="p-speck p1"></span>
+          <span class="p-speck p2"></span>
+          <span class="p-speck p3"></span>
+          <span class="p-speck p4"></span>
+          <span class="p-speck p5"></span>
+          <span class="p-speck p6"></span>
+        </div>
+        <!-- Layer 2: Directional Readability Dark Gradient -->
         <div class="hero-overlay-gradient"></div>
+        <!-- Layer 3: Cinematic Perimeter Vignette -->
         <div class="hero-vignette"></div>
       </div>
 
       <div class="hero-inner-container">
+        <!-- Layer 6: Minimal Technical HUD Telemetry (Ultra-subtle, non-competing) -->
+        <div class="hero-hud-telemetry" aria-hidden="true">
+          <span class="hud-item"><span class="hud-status-node"></span>SYS // RELAY_2026</span>
+          <span class="hud-sep">/</span>
+          <span class="hud-item">WAYPOINT 00: START GATE</span>
+          <span class="hud-sep">/</span>
+          <span class="hud-item">STATUS: ACTIVE</span>
+        </div>
         
         <!-- Hero Main Title Group -->
         <div class="hero-title-group">
@@ -267,6 +291,7 @@
 
       <div class="container">
         <div class="section-header text-center reveal-up">
+          <div class="route-checkpoint"><span class="cp-node"></span><span>CHECKPOINT 01 // TIME SYNC</span></div>
           <h2 class="section-title">THE COUNTDOWN</h2>
           <p class="section-subtitle">UNTIL <span class="text-cyan">CODE RELAY</span></p>
         </div>
@@ -335,6 +360,7 @@
           
           <!-- Top Row: Editorial Header with Short Description -->
           <div class="about-header-group reveal-up">
+            <div class="route-checkpoint"><span class="cp-node"></span><span>CHECKPOINT 02 // RELAY CONCEPT</span></div>
             <h2 class="about-title">
               WHAT IS<br><span class="text-cyan-accent">CODE RELAY?</span>
             </h2>
@@ -389,6 +415,7 @@
     <section class="section-container rules-section" id="rules">
       <div class="container">
         <div class="section-header reveal-up">
+          <div class="route-checkpoint"><span class="cp-node"></span><span>CHECKPOINT 03 // COMPETITION PROTOCOL</span></div>
           <h2 class="section-title">GENERAL RULES</h2>
           <p class="section-subtitle">Follow competition protocol for fair and seamless execution.</p>
         </div>
@@ -518,6 +545,7 @@
     <section class="section-container rounds-section" id="rounds">
       <div class="container">
         <div class="section-header reveal-up">
+          <div class="route-checkpoint"><span class="cp-node"></span><span>CHECKPOINT 04 // 4-STAGE CIRCUIT</span></div>
           <h2 class="section-title">EVENT ROUNDS</h2>
           <p class="section-subtitle">Four distinct stages designed to evaluate every aspect of competitive software engineering.</p>
         </div>
@@ -618,6 +646,7 @@
     <section class="section-container why-section" id="why">
       <div class="container">
         <div class="section-header reveal-up">
+          <div class="route-checkpoint"><span class="cp-node"></span><span>CHECKPOINT 05 // ENGINEERING DYNAMICS</span></div>
           <h2 class="section-title">WHY <span class="text-cyan">CODE RELAY?</span></h2>
           <p class="section-subtitle">Beyond individual coding speed — engineered to test real engineering dynamics.</p>
         </div>
@@ -666,6 +695,7 @@
     <section class="section-container faq-section" id="faq">
       <div class="container">
         <div class="section-header text-center reveal-up">
+          <div class="route-checkpoint"><span class="cp-node"></span><span>CHECKPOINT 06 // COMPETITOR BRIEFING</span></div>
           <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
           <p class="section-subtitle">Everything you need to know about participating in Code Relay.</p>
         </div>
@@ -864,7 +894,7 @@
               <div class="cta-telemetry-rail cta-anim-item" data-anim-step="2" aria-hidden="true">
                 <span class="cta-telemetry-line left"></span>
                 <span class="cta-telemetry-node"></span>
-                <span class="cta-telemetry-tag">FINAL CALL</span>
+                <span class="cta-telemetry-tag">FINISH LINE // FINAL CALL</span>
                 <span class="cta-telemetry-node"></span>
                 <span class="cta-telemetry-line right"></span>
               </div>
@@ -908,6 +938,7 @@
         
         <!-- Coordinators with Real Photographs -->
         <div class="section-header reveal-up">
+          <div class="route-checkpoint"><span class="cp-node"></span><span>CHECKPOINT 07 // PIT CREW &amp; VENUE</span></div>
           <h2 class="section-title">EVENT COORDINATORS</h2>
           <p class="section-subtitle">Reach out directly to the coordinators for queries regarding registration or event protocol.</p>
         </div>

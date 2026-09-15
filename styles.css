@@ -169,6 +169,42 @@ body {
   display: inline-block;
 }
 
+/* Recurring Race Track Route Checkpoint Motif */
+.route-checkpoint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.64rem, 0.8vw, 0.72rem);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--primary-cyan);
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+  padding: 0.28rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: rgba(0, 210, 255, 0.05);
+  border: 1px solid rgba(0, 210, 255, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  width: fit-content;
+}
+
+.text-center .route-checkpoint,
+.route-checkpoint-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cp-node {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--primary-cyan);
+  box-shadow: 0 0 6px var(--primary-cyan);
+  animation: hudPulse 3s infinite ease-in-out;
+}
+
 .section-title {
   font-family: var(--font-heading);
   font-size: clamp(2rem, 5vw, 3.5rem);
@@ -617,49 +653,160 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 8.5rem 0 4rem 0;
+  padding: clamp(6.5rem, 12vh, 8.5rem) 0 clamp(2.5rem, 5vh, 4rem) 0;
   overflow: hidden;
 }
 
-/* Background Media & Cinematic Multi-layer Overlay */
+/* ============================================================
+   HERO MULTI-LAYER CINEMATIC COMPOSITION
+   ============================================================ */
 .hero-media-wrapper {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
+  overflow: hidden;
+  background-color: var(--bg-black);
 }
 
+/* Layer 1: Core Artwork (City, Skyline, Runners, Luminous Track) */
 .hero-bg-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
-  transform: scale(1.01);
+  object-position: 50% 36%;
+  transform: scale(1.02);
   animation: heroBgEnter 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   will-change: transform, opacity, filter;
 }
 
-/* Subtle overlays ensuring the original background image remains clearly visible behind the typography */
+/* Layer 4: Atmospheric Cyan/Blue Haze & Warm City Glow (Restrained & Depth-enhancing) */
+.hero-haze-ambient {
+  position: absolute;
+  inset: 0;
+  background:
+    /* Upper left distant atmosphere */
+    radial-gradient(ellipse 70% 55% at 18% 22%, rgba(0, 210, 255, 0.09) 0%, transparent 68%),
+    /* Mid-right warm city ambient lighting preservation */
+    radial-gradient(ellipse 65% 50% at 82% 42%, rgba(249, 115, 22, 0.08) 0%, transparent 65%),
+    /* Lower track horizon bloom */
+    radial-gradient(ellipse 55% 35% at 60% 72%, rgba(0, 210, 255, 0.12) 0%, transparent 70%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* Layer 7: Faint Digital Grid Texture (Barely visible, purely atmospheric) */
+.hero-tech-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 210, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 210, 255, 0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 25%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 25%, transparent 85%);
+  pointer-events: none;
+}
+
+/* Layer 5: Very Subtle Floating Digital Particles (Lightweight CSS) */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.p-speck {
+  position: absolute;
+  border-radius: 50%;
+  background: #38bdf8;
+  opacity: 0.35;
+  filter: blur(0.5px);
+  animation: floatDust 12s infinite ease-in-out alternate;
+}
+
+.p1 { width: 2.5px; height: 2.5px; top: 22%; left: 28%; animation-duration: 14s; opacity: 0.4; }
+.p2 { width: 2px; height: 2px; top: 48%; left: 18%; animation-duration: 18s; animation-delay: -3s; opacity: 0.3; }
+.p3 { width: 3px; height: 3px; top: 35%; left: 65%; animation-duration: 16s; animation-delay: -5s; opacity: 0.45; background: #fb923c; }
+.p4 { width: 1.5px; height: 1.5px; top: 62%; left: 42%; animation-duration: 20s; animation-delay: -7s; opacity: 0.35; }
+.p5 { width: 2px; height: 2px; top: 15%; left: 82%; animation-duration: 15s; animation-delay: -2s; opacity: 0.25; }
+.p6 { width: 2.5px; height: 2.5px; top: 75%; left: 75%; animation-duration: 17s; animation-delay: -8s; opacity: 0.35; }
+
+@keyframes floatDust {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(18px, -24px, 0);
+  }
+  100% {
+    transform: translate3d(-14px, -45px, 0);
+  }
+}
+
+/* Layer 2: Directional Readability Dark Gradient (Protects text without flattening background) */
 .hero-overlay-gradient {
   position: absolute;
   inset: 0;
   background: 
-    /* Gentle top navbar vignette for nav clarity */
-    linear-gradient(180deg, rgba(3, 7, 18, 0.65) 0%, rgba(3, 7, 18, 0.15) 20%, transparent 40%),
-    /* Soft directional shading to ensure text contrast while keeping the background image clearly visible */
-    linear-gradient(90deg, rgba(3, 7, 18, 0.45) 0%, rgba(3, 7, 18, 0.15) 35%, transparent 65%),
-    /* Bottom blend into countdown section */
-    linear-gradient(0deg, var(--bg-black) 0%, rgba(3, 7, 18, 0.5) 12%, transparent 30%);
+    /* Directional shading behind typography on the left */
+    linear-gradient(90deg, rgba(3, 7, 18, 0.72) 0%, rgba(3, 7, 18, 0.48) 32%, rgba(3, 7, 18, 0.18) 58%, transparent 78%),
+    /* Top navbar vignette for crystal navigation contrast */
+    linear-gradient(180deg, rgba(3, 7, 18, 0.65) 0%, rgba(3, 7, 18, 0.15) 18%, transparent 35%),
+    /* Bottom seamless gradient transition into next section */
+    linear-gradient(0deg, var(--bg-black) 0%, rgba(3, 7, 18, 0.55) 12%, transparent 28%);
 }
 
+/* Layer 3: Cinematic Perimeter Vignette (Natural focal guidance) */
 .hero-vignette {
   position: absolute;
   inset: 0;
-  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 0 120px rgba(1, 4, 12, 0.7);
+  background: radial-gradient(ellipse 92% 82% at 50% 48%, transparent 56%, rgba(1, 4, 12, 0.5) 100%);
 }
 
-.hero-cyber-grid {
-  display: none;
+/* Layer 6: Minimal Technical HUD Telemetry (Decorative, Low-prominence) */
+.hero-hud-telemetry {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.65rem, 0.85vw, 0.76rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: rgba(148, 163, 184, 0.7);
+  text-transform: uppercase;
+  margin-bottom: 0.95rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(4, 10, 24, 0.5);
+  border: 1px solid rgba(0, 210, 255, 0.15);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  width: fit-content;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: heroFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+}
+
+.hud-status-node {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary-cyan);
+  box-shadow: 0 0 8px var(--primary-cyan);
+  margin-right: 0.2rem;
+  animation: hudPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes hudPulse {
+  0%, 100% { opacity: 0.6; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 12px var(--primary-cyan); }
+}
+
+.hud-sep {
+  color: rgba(0, 210, 255, 0.3);
 }
 
 /* Hero Content Positioning: Title anchored at 5-6% from the left edge */
@@ -2995,15 +3142,203 @@ body {
 .reveal-stagger.is-revealed > *:nth-child(8) { transition-delay: 0.61s; }
 
 /* ============================================================
-   RESPONSIVENESS & MOBILE LAYOUTS
+   RESPONSIVENESS & COMPOSITIONAL DESIGN SYSTEM
+   Supports: 390px, 430px, 768px, 1024px, 1366px, 1440px, 1920px, Ultrawide
+   "SAME DESIGN SYSTEM — DIFFERENT COMPOSITION"
    ============================================================ */
+
+/* ------------------------------------------------------------
+   1. ULTRAWIDE & 4K DISPLAYS (1921px+)
+   ------------------------------------------------------------ */
+@media (min-width: 1921px) {
+  .container {
+    max-width: 1520px;
+    padding: 0 2.5rem;
+  }
+
+  .hero-inner-container {
+    max-width: 1680px;
+    padding-left: clamp(3rem, 7vw, 9rem);
+    padding-right: clamp(3rem, 7vw, 9rem);
+  }
+
+  .hero-bg-img {
+    object-position: 50% 34%;
+    transform: scale(1.01);
+  }
+
+  .hero-title {
+    font-size: clamp(4.2rem, 6.5vw, 7.8rem);
+  }
+
+  .hero-tagline {
+    font-size: 1.45rem;
+    letter-spacing: 0.25em;
+  }
+
+  .hero-stat-pill {
+    padding: 1.4rem 2.6rem;
+    gap: 2.2rem;
+    border-radius: 26px;
+  }
+
+  .stat-num {
+    font-size: 2.2rem;
+  }
+
+  .stat-text {
+    font-size: 0.82rem;
+  }
+
+  .prize-counter {
+    font-size: clamp(5.2rem, 6.2vw, 7.5rem);
+  }
+}
+
+/* ------------------------------------------------------------
+   2. STANDARD LARGE DESKTOP (1441px - 1920px)
+   ------------------------------------------------------------ */
+@media (min-width: 1441px) and (max-width: 1920px) {
+  .container {
+    max-width: 1360px;
+  }
+
+  .hero-inner-container {
+    max-width: 1540px;
+  }
+
+  .hero-bg-img {
+    object-position: 50% 36%;
+  }
+
+  .hero-title {
+    font-size: clamp(3.4rem, 6.2vw, 6.6rem);
+  }
+}
+
+/* ------------------------------------------------------------
+   3. STANDARD LAPTOPS & DESKTOPS (1025px - 1440px)
+   ------------------------------------------------------------ */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  .hero-section {
+    padding: clamp(6rem, 11vh, 7.5rem) 0 clamp(2rem, 4.5vh, 3.2rem) 0;
+  }
+
+  .hero-bg-img {
+    object-position: 52% 38%;
+  }
+
+  .hero-title {
+    font-size: clamp(2.8rem, 5.2vw, 5.2rem);
+    row-gap: 14px;
+  }
+
+  .hero-tagline {
+    font-size: 1.15rem;
+    letter-spacing: 0.2em;
+  }
+
+  .hero-cta-group {
+    margin-bottom: clamp(2.2rem, 4.5vh, 3.8rem);
+    gap: 1.2rem;
+  }
+
+  .hero-stat-pill {
+    padding: 1.05rem 1.85rem;
+    gap: 1.5rem;
+    border-radius: 20px;
+  }
+
+  .stat-num {
+    font-size: 1.7rem;
+  }
+
+  .stat-label-bold {
+    font-size: 1.35rem;
+  }
+
+  .stat-text {
+    font-size: 0.68rem;
+  }
+}
+
+/* ------------------------------------------------------------
+   4. HEIGHT-CONSTRAINED VIEWPORTS (Laptops with 650px-820px height)
+   Prevents hero content or bottom stats from spilling below fold
+   ------------------------------------------------------------ */
+@media (max-height: 820px) and (min-width: 769px) {
+  .hero-section {
+    padding: 5.2rem 0 1.5rem 0;
+    justify-content: center;
+  }
+
+  .hero-hud-telemetry {
+    margin-bottom: 0.65rem;
+    font-size: 0.68rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 4.8vw, 4.2rem);
+    row-gap: 10px;
+    margin-bottom: 0.8rem;
+  }
+
+  .hero-tagline-wrapper {
+    margin-bottom: 0.55rem;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+    letter-spacing: 0.16em;
+  }
+
+  .hero-cta-group {
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    padding: 0.78rem 1.8rem;
+    font-size: 0.82rem;
+  }
+
+  .hero-stat-pill {
+    padding: 0.85rem 1.5rem;
+    gap: 1.2rem;
+    border-radius: 18px;
+  }
+
+  .stat-num {
+    font-size: 1.45rem;
+  }
+
+  .stat-label-bold {
+    font-size: 1.2rem;
+  }
+
+  .stat-text {
+    font-size: 0.62rem;
+  }
+
+  .scroll-down-indicator {
+    bottom: 0.65rem;
+  }
+}
+
+/* ------------------------------------------------------------
+   5. TABLET LANDSCAPE & PORTRAIT (769px - 1024px)
+   ------------------------------------------------------------ */
 @media (max-width: 1024px) {
   .desktop-nav { display: none; }
   .menu-toggle { display: flex; }
   
   .about-editorial-wrap {
     grid-template-columns: 1fr;
-    gap: 3.5rem;
+    gap: 3.2rem;
   }
   
   .about-lead {
@@ -3015,28 +3350,39 @@ body {
   }
   
   .rules-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .rule-card.rule-featured {
-    grid-column: span 1;
+    grid-column: span 2;
   }
   
   .why-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
-  .footer-top-row {
-    grid-template-columns: 1fr 1fr;
+
+  .coordinators-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
   
+  .hero-bg-img {
+    object-position: 56% 36%;
+  }
+
+  .hero-title {
+    font-size: clamp(2.6rem, 6.8vw, 4.4rem);
+  }
+
   .hero-bottom-deck {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2rem;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
   }
 }
 
+/* ------------------------------------------------------------
+   6. TABLET PORTRAIT & LARGE MOBILE (481px - 768px)
+   ------------------------------------------------------------ */
 @media (max-width: 768px) {
   .site-header {
     padding: 0.85rem 0;
@@ -3050,7 +3396,7 @@ body {
     display: none;
   }
 
-  /* Hero Mobile Composition: Full initial mobile viewport */
+  /* Hero Mobile Portrait Framing: Camera positioned for vertical depth */
   .hero-section {
     min-height: 100vh;
     min-height: 100svh;
@@ -3067,22 +3413,12 @@ body {
     padding: 0 1.25rem;
   }
 
-  .hero-media-wrapper {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: var(--bg-black);
-  }
-
   .hero-bg-img {
     width: 100%;
     height: 100%;
-    max-height: none;
     object-fit: cover;
-    object-position: 62% 42%;
-    transform: scale(1.02);
+    object-position: 62% 34%;
+    transform: scale(1.03);
   }
 
   .hero-overlay-gradient {
@@ -3090,28 +3426,30 @@ body {
     inset: 0;
     background: linear-gradient(
       180deg,
-      rgba(3, 7, 18, 0.72) 0%,
-      rgba(3, 7, 18, 0.42) 38%,
-      rgba(3, 7, 18, 0.72) 80%,
+      rgba(3, 7, 18, 0.76) 0%,
+      rgba(3, 7, 18, 0.38) 32%,
+      rgba(3, 7, 18, 0.65) 75%,
       var(--bg-black) 100%
     );
   }
 
+  .hero-hud-telemetry {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    padding: 0.28rem 0.72rem;
+  }
+
   .hero-title {
-    font-size: clamp(2.4rem, 11vw, 3.8rem);
+    font-size: clamp(2.4rem, 10vw, 3.6rem);
     transform: skewX(-12deg);
     line-height: 0.84;
     letter-spacing: -0.035em;
     row-gap: 12px;
   }
 
-  .hero-description {
+  .hero-tagline {
     font-size: 0.95rem;
-    line-height: 1.6;
-    margin-left: 0;
-    padding: 0.75rem 1.1rem;
-    max-width: 100%;
-    margin-bottom: 2rem;
+    letter-spacing: 0.14em;
   }
 
   .hero-cta-group {
@@ -3236,8 +3574,12 @@ body {
     display: none;
   }
   
-  .experience-grid {
+  .rules-grid {
     grid-template-columns: 1fr;
+  }
+
+  .rule-card.rule-featured {
+    grid-column: span 1;
   }
   
   .why-grid {
@@ -3333,7 +3675,6 @@ body {
     justify-content: center;
   }
 
-  /* Fixed Back to Top button: compact circular glass button */
   .back-to-top-btn {
     bottom: 1.25rem;
     right: 1.25rem;
@@ -3342,7 +3683,11 @@ body {
   }
 }
 
-@media (max-width: 480px) {
+/* ------------------------------------------------------------
+   7. STANDARD MOBILE (391px - 430px)
+   Covers iPhone 14/15/16 Pro Max, Pixel 7/8 Pro, Galaxy S23/S24+
+   ------------------------------------------------------------ */
+@media (max-width: 430px) {
   .nav-container {
     padding: 0 1rem;
   }
@@ -3357,38 +3702,36 @@ body {
   }
 
   .hero-section {
-    min-height: 100vh;
-    min-height: 100svh;
-    min-height: 100dvh;
     padding: 5.25rem 0 calc(2rem + env(safe-area-inset-bottom, 0px)) 0;
   }
 
   .hero-inner-container {
-    padding: 0 1.1rem;
+    padding: 0 1.15rem;
+  }
+
+  .hero-bg-img {
+    object-position: 64% 34%;
+    transform: scale(1.04);
+  }
+
+  .hero-hud-telemetry {
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    padding: 0.25rem 0.65rem;
+    margin-bottom: 0.75rem;
   }
 
   .hero-title {
-    font-size: clamp(1.95rem, 10.2vw, 2.85rem);
+    font-size: clamp(2.15rem, 9.4vw, 3.1rem);
     transform: skewX(-11deg);
     letter-spacing: -0.035em;
     line-height: 0.84;
     row-gap: 10px;
   }
 
-  .hero-bg-img {
-    object-position: 63% 38%;
-  }
-
   .hero-tagline {
-    font-size: 0.9rem;
-    letter-spacing: 0.13em;
-  }
-
-  .hero-description {
     font-size: 0.88rem;
-    line-height: 1.55;
-    padding: 0.65rem 0.85rem;
-    margin-bottom: 1.65rem;
+    letter-spacing: 0.12em;
   }
 
   .hero-cta-group {
@@ -3396,28 +3739,28 @@ body {
     margin-bottom: 2rem;
   }
 
+  .btn-primary, .btn-secondary {
+    padding: 0.88rem 1.6rem;
+    font-size: 0.85rem;
+  }
+
   .hero-stat-pill {
-    padding: 0.85rem 0.55rem;
+    padding: 0.88rem 0.6rem;
     gap: 0.35rem;
     font-family: var(--font-heading);
   }
 
   .stat-num {
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
+    font-size: 1.35rem;
   }
 
   .stat-label-bold {
-    font-family: var(--font-heading);
-    font-size: 1.05rem;
+    font-size: 1.1rem;
   }
 
   .stat-text {
-    font-family: var(--font-heading);
-    font-size: 0.58rem;
-    font-weight: 700;
+    font-size: 0.6rem;
     letter-spacing: 0.05em;
-    color: #cbd5e1;
   }
 
   .stat-divider {
@@ -3442,45 +3785,10 @@ body {
     font-size: 1.05rem;
   }
 
-  /* ₹45,000 Prize Pool Display: 100% visible, centered, zero clipping on 360-480px */
-  .prize-card-wrapper {
-    padding: 2.5rem 0.85rem;
-    border-radius: 16px;
-  }
-
   .prize-title {
     font-size: 1.35rem;
     letter-spacing: 0.12em;
     margin-bottom: 1rem;
-  }
-
-  .prize-amount-display {
-    margin-bottom: 1.15rem;
-  }
-
-  .currency-symbol {
-    font-size: clamp(1.5rem, 5.5vw, 2.1rem);
-    margin-right: 0.2rem;
-  }
-
-  .prize-counter {
-    font-size: clamp(2rem, 7.5vw, 2.8rem);
-    letter-spacing: -0.03em;
-  }
-
-  .prize-section {
-    padding: 4.5rem 0 5rem 0;
-  }
-
-  .telemetry-tag {
-    font-size: 0.64rem;
-    letter-spacing: 0.18em;
-    padding: 4px 12px;
-  }
-
-  .focal-bracket {
-    width: 12px;
-    height: 52%;
   }
 
   .currency-symbol {
@@ -3497,21 +3805,6 @@ body {
     margin-top: 1rem;
   }
 
-  .prize-supporting-line {
-    gap: 0.75rem;
-    margin: 1.5rem 0 1.85rem 0;
-  }
-
-  .laser-beam {
-    flex: 0 1 25px;
-  }
-
-  .stakes-text {
-    font-size: 0.78rem;
-    letter-spacing: 0.16em;
-  }
-
-  /* Rules & Rounds Cards */
   .rule-card {
     padding: 1.35rem 1.1rem;
     border-radius: 14px;
@@ -3520,24 +3813,6 @@ body {
   .round-row-card {
     padding: 1.35rem 1.1rem;
     border-radius: 14px;
-  }
-
-  .round-unified-label {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.85rem;
-  }
-
-  .round-unified-num {
-    font-size: 0.98rem;
-  }
-
-  .round-name {
-    font-size: 1.25rem;
-  }
-
-  .round-desc {
-    font-size: 0.88rem;
-    line-height: 1.55;
   }
 
   .coordinator-card {
@@ -3550,27 +3825,9 @@ body {
     height: 64px;
   }
 
-  .coord-name {
-    font-size: 1rem;
-  }
-
   .location-box {
     padding: 1.5rem 1.15rem;
     gap: 1.25rem;
-  }
-
-  .location-city {
-    font-size: 1.25rem;
-  }
-
-  .location-address {
-    font-size: 0.88rem;
-    line-height: 1.5;
-  }
-
-  .btn-map {
-    width: 100%;
-    justify-content: center;
   }
 
   .cta-section {
@@ -3582,76 +3839,119 @@ body {
     border-radius: var(--radius-md);
   }
 
-  .cta-reticle {
-    width: 14px;
-    height: 14px;
-  }
-
-  .cta-reticle.tl { top: 10px; left: 10px; }
-  .cta-reticle.tr { top: 10px; right: 10px; }
-  .cta-reticle.bl { bottom: 10px; left: 10px; }
-  .cta-reticle.br { bottom: 10px; right: 10px; }
-
-  .cta-telemetry-rail {
-    max-width: 290px;
-    margin-bottom: 1.5rem;
-  }
-
-  .cta-telemetry-tag {
-    font-size: 0.64rem;
-    letter-spacing: 0.18em;
-    padding: 3px 10px;
-  }
-
-  .cta-title-pre {
-    font-size: 1.05rem;
-    letter-spacing: 0.18em;
-  }
-
   .cta-title {
     font-size: clamp(2rem, 8.8vw, 2.75rem);
     line-height: 1.05;
   }
+}
 
-  .cta-lead {
+/* ------------------------------------------------------------
+   8. COMPACT MOBILE (<= 390px)
+   Covers iPhone 12/13/14/15 standard & Mini, 360px Android devices
+   ------------------------------------------------------------ */
+@media (max-width: 390px) {
+  .container {
+    padding: 0 0.95rem;
+  }
+
+  .hero-inner-container {
+    padding: 0 0.95rem;
+  }
+
+  .hero-hud-telemetry {
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    padding: 0.22rem 0.55rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.95rem, 8.8vw, 2.65rem);
+    transform: skewX(-10deg);
+    line-height: 0.85;
+    row-gap: 8px;
+  }
+
+  .hero-tagline {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+  }
+
+  .btn-primary, .btn-secondary {
+    padding: 0.82rem 1.3rem;
+    font-size: 0.82rem;
+  }
+
+  .hero-stat-pill {
+    padding: 0.75rem 0.45rem;
+    gap: 0.25rem;
+    border-radius: 14px;
+  }
+
+  .stat-num {
+    font-size: 1.22rem;
+  }
+
+  .stat-label-bold {
     font-size: 0.95rem;
-    line-height: 1.55;
-    margin-bottom: 2rem;
   }
 
-  .cta-btn-register, .cta-btn-rules {
-    padding: 0.95rem 1.5rem;
-    font-size: 0.88rem;
+  .stat-text {
+    font-size: 0.54rem;
+    line-height: 1.15;
+    letter-spacing: 0.03em;
   }
 
-  .site-footer {
-    padding: 2.75rem 0 2rem 0;
+  .stat-divider {
+    height: 20px;
   }
 
-  .footer-brand-title {
+  .currency-symbol {
+    font-size: clamp(1.5rem, 5.5vw, 2.1rem);
+    margin-right: 0.2rem;
+  }
+
+  .prize-counter {
+    font-size: clamp(2rem, 7.8vw, 2.75rem);
+    letter-spacing: -0.03em;
+  }
+
+  .timer-card {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .timer-digit {
+    font-size: 2.2rem;
+  }
+
+  .coord-photo-wrapper {
+    width: 56px;
+    height: 56px;
+  }
+
+  .coord-name {
+    font-size: 0.95rem;
+  }
+
+  .location-city {
     font-size: 1.15rem;
   }
 
-  .footer-event-title {
-    font-size: 1rem;
+  .location-address {
+    font-size: 0.82rem;
   }
 
-  .footer-tagline {
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
+  .cta-title {
+    font-size: clamp(1.85rem, 8.2vw, 2.3rem);
   }
 
-  .footer-divider-rail {
-    max-width: 280px;
-  }
-
-  .footer-meta-block {
-    font-size: 0.7rem;
-    gap: 0.25rem;
+  .footer-brand-title {
+    font-size: 1.05rem;
   }
 }
 
-/* ACCESSIBILITY: RESPECT PREFERS-REDUCED-MOTION */
+/* ============================================================
+   ACCESSIBILITY: RESPECT PREFERS-REDUCED-MOTION
+   ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -3668,11 +3968,18 @@ body {
   .hero-intro-cta,
   .hero-intro-origin,
   .hero-intro-stat,
+  .hero-hud-telemetry,
+  .hud-status-node,
+  .p-speck,
   .reveal-up,
   .reveal-scale,
   .reveal-stagger > * {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
+  }
+
+  .hero-particles {
+    display: none !important;
   }
 }

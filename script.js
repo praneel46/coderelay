@@ -472,22 +472,38 @@ function initBackToTop() {
 
 // ============================================================
 // SUBTLE HERO PARALLAX
+// Provides multi-layer depth between artwork and atmosphere on desktop
+// Disabled on mobile screens (< 768px) and when prefers-reduced-motion is active
 // ============================================================
 function initHeroParallax() {
   if (PREFERS_REDUCED_MOTION) return;
 
   const heroBg = document.getElementById("heroBgImg");
+  const heroHaze = document.querySelector(".hero-haze-ambient");
   const heroSection = document.getElementById("hero");
   if (!heroBg || !heroSection) return;
 
+  let ticking = false;
+
   window.addEventListener("scroll", () => {
     if (window.innerWidth < 768) return;
-    const scrollPos = window.scrollY;
-    if (scrollPos <= heroSection.offsetHeight) {
-      // Very subtle, smooth parallax translation without jumping
-      const translateY = scrollPos * 0.18;
-      const scale = 1.02 + scrollPos * 0.00015;
-      heroBg.style.transform = `translate3d(0, ${translateY}px, 0) scale(${scale})`;
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrollPos = window.scrollY;
+        if (scrollPos <= heroSection.offsetHeight) {
+          // Artwork layer: subtle translation and microscopic scale
+          const translateY = scrollPos * 0.16;
+          const scale = 1.02 + scrollPos * 0.00012;
+          heroBg.style.transform = `translate3d(0, ${translateY}px, 0) scale(${scale})`;
+
+          // Atmospheric haze layer: ultra-slow differential rate for multi-layer depth
+          if (heroHaze) {
+            heroHaze.style.transform = `translate3d(0, ${scrollPos * 0.07}px, 0)`;
+          }
+        }
+        ticking = false;
+      });
+      ticking = true;
     }
   }, { passive: true });
 }
