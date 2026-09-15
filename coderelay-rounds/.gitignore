@@ -1,0 +1,22 @@
+# Node dependencies
+node_modules/
+npm-debug.log*
+
+# Next.js build output
+.next/
+out/
+
+# NestJS build output
+dist/
+
+# Prisma
+/prisma/client/
+
+# Environment files (NEVER COMMIT SECRETS)
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db

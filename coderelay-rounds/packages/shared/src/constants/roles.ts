@@ -1,0 +1,6 @@
+export enum UserRole {
+  PARTICIPANT = 'PARTICIPANT',
+  ORGANIZER = 'ORGANIZER',
+  JUDGE = 'JUDGE',
+  HOST = 'HOST',
+}

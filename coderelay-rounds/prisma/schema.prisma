@@ -1,0 +1,378 @@
+// Prisma Database Schema for VIDYANTRA 2026 Code Relay
+// Authoritative persistent record for competition state, auth, and audit
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// User roles in system
+enum Role {
+  PARTICIPANT
+  ORGANIZER
+  JUDGE
+  HOST
+}
+
+// Round Lifecycle Status
+enum RoundStatus {
+  DRAFT
+  READY
+  OPEN
+  ACTIVE
+  PAUSED
+  CLOSED
+  FINALIZED
+}
+
+// Stage Session Status
+enum StageStatus {
+  PENDING
+  ACTIVE
+  SUBMITTED
+  TIMED_OUT
+  FORCE_SUBMITTED
+}
+
+// Question Format Types
+enum QuestionType {
+  MCQ
+  PREDICT_OUTPUT
+  DEBUGGING
+  CODING
+}
+
+// Question Lifecycle Status
+enum QuestionStatus {
+  DRAFT
+  PUBLISHED
+  LOCKED
+}
+
+// Question Difficulty
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+// Relay Snapshot Types (Round 4)
+enum SnapshotType {
+  PERIODIC
+  HANDOFF
+  FINAL_LOCK
+}
+
+// Security Violation Types
+enum ViolationType {
+  TAB_SWITCH
+  VISIBILITY_CHANGE
+  FULLSCREEN_EXIT
+  COPY
+  PASTE
+}
+
+// 1. Privileged System User (Organizer / Judge / Host)
+model User {
+  id           String     @id @default(uuid())
+  username     String     @unique
+  passwordHash String
+  role         Role
+  displayName  String
+  isActive     Boolean    @default(true)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  auditLogs    AuditLog[]
+
+  @@map("users")
+}
+
+// 2. Competition Team
+model Team {
+  id              String                @id @default(uuid())
+  teamCode        String                @unique // e.g. "ALPHA-042"
+  name            String
+  accessCodeHash  String?
+  isActive        Boolean               @default(true)
+  isQualifiedR2   Boolean               @default(false)
+  isQualifiedR4   Boolean               @default(false)
+  createdAt       DateTime              @default(now())
+  updatedAt       DateTime              @updatedAt
+  members         TeamMember[]
+  sessions        ParticipantSession[]
+  submissions     Submission[]
+  relaySnapshots  RelaySnapshot[]
+  securityEvents  SecurityEvent[]
+  representatives RoundRepresentative[]
+  stageSessions   StageSession[]
+
+  @@map("teams")
+}
+
+// 3. Team Member (1, 2, or 3 per team)
+model TeamMember {
+  id              String                @id @default(uuid())
+  teamId          String
+  team            Team                  @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  memberOrder     Int                   // 1, 2, or 3
+  displayName     String
+  pinHash         String                // Hashed 4-digit PIN
+  isActive        Boolean               @default(true)
+  createdAt       DateTime              @default(now())
+  updatedAt       DateTime              @updatedAt
+  sessions        ParticipantSession[]
+  submissions     Submission[]
+  relaySnapshots  RelaySnapshot[]
+  securityEvents  SecurityEvent[]
+  representatives RoundRepresentative[]
+  stageSessions   StageSession[]
+
+  @@unique([teamId, memberOrder])
+  @@map("team_members")
+}
+
+// 4. Participant Session Context
+model ParticipantSession {
+  id            String         @id @default(uuid())
+  token         String         @unique
+  teamId        String
+  team          Team           @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  memberId      String
+  member        TeamMember     @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  role          Role           @default(PARTICIPANT)
+  expiresAt     DateTime
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  stageSessions StageSession[]
+
+  @@index([teamId, memberId])
+  @@index([token])
+  @@map("participant_sessions")
+}
+
+// 5. Competition Round
+model Round {
+  id              String                @id @default(uuid())
+  roundNumber     Int                   @unique // 1, 2, 3, 4
+  slug            String                @unique // "code-iq", "triple-strike", "round-3", "relay-finale"
+  title           String
+  description     String
+  status          RoundStatus           @default(DRAFT)
+  durationSeconds Int
+  config          Json                  @default("{}")
+  startedAt       DateTime?
+  pausedAt        DateTime?
+  endedAt         DateTime?
+  createdAt       DateTime              @default(now())
+  updatedAt       DateTime              @updatedAt
+  stages          RoundStage[]
+  arenaCodes      ArenaCode[]
+  questions       Question[]
+  submissions     Submission[]
+  relaySnapshots  RelaySnapshot[]
+  representatives RoundRepresentative[]
+
+  @@map("rounds")
+}
+
+// 6. Round Stage Breakdown
+model RoundStage {
+  id              String          @id @default(uuid())
+  roundId         String
+  round           Round           @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  stageOrder      Int             // 1, 2, 3
+  title           String
+  durationSeconds Int
+  memberOrder     Int?            // Optional member binding (1, 2, or 3)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  questions       Question[]
+  submissions     Submission[]
+  relaySnapshots  RelaySnapshot[]
+  stageSessions   StageSession[]
+  securityEvents  SecurityEvent[]
+
+  @@unique([roundId, stageOrder])
+  @@map("round_stages")
+}
+
+// 7. Active Member Stage Session
+model StageSession {
+  id                   String              @id @default(uuid())
+  participantSessionId String?
+  participantSession   ParticipantSession? @relation(fields: [participantSessionId], references: [id], onDelete: Cascade)
+  stageId              String
+  stage                RoundStage          @relation(fields: [stageId], references: [id], onDelete: Cascade)
+  teamId               String?
+  team                 Team?               @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  memberId             String?
+  member               TeamMember?         @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  status               StageStatus         @default(PENDING)
+  warningCount         Int                 @default(0)
+  startedAt            DateTime?
+  deadlineAt           DateTime?
+  submittedAt          DateTime?
+  endedAt              DateTime?
+  isFinal              Boolean             @default(false)
+  isAutoSubmitted      Boolean             @default(false)
+  createdAt            DateTime            @default(now())
+  updatedAt            DateTime            @updatedAt
+
+  @@index([participantSessionId, stageId])
+  @@index([teamId, stageId])
+  @@map("stage_sessions")
+}
+
+// 8. Temporary Round Arena Access Code
+model ArenaCode {
+  id          String    @id @default(uuid())
+  roundId     String
+  round       Round     @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  code        String    @unique // Announced in physical arena e.g. "STRIKE-7394"
+  isActive    Boolean   @default(true)
+  generatedAt DateTime  @default(now())
+  revokedAt   DateTime?
+
+  @@map("arena_codes")
+}
+
+// 9. Question Bank
+model Question {
+  id               String           @id @default(uuid())
+  title            String
+  problemStatement String
+  codeSnippet      String?
+  language         String?          @default("python")
+  type             QuestionType
+  difficulty       Difficulty       @default(MEDIUM)
+  marks            Int              @default(10)
+  status           QuestionStatus   @default(DRAFT)
+  roundId          String
+  round            Round            @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  stageId          String?
+  stage            RoundStage?      @relation(fields: [stageId], references: [id], onDelete: SetNull)
+  displayOrder     Int              @default(1)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  options          QuestionOption[]
+  submissions      Submission[]
+
+  @@index([roundId, stageId])
+  @@map("questions")
+}
+
+// 10. Question Option (MCQ / Predict Output)
+model QuestionOption {
+  id           String   @id @default(uuid())
+  questionId   String
+  question     Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  label        String   // A, B, C, D
+  content      String
+  isCorrect    Boolean  @default(false) // Filtered out from participant APIs!
+  displayOrder Int      @default(1)
+
+  @@unique([questionId, label])
+  @@map("question_options")
+}
+
+// 11. Official Submissions
+model Submission {
+  id              String      @id @default(uuid())
+  teamId          String
+  team            Team        @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  roundId         String
+  round           Round       @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  stageId         String?
+  stage           RoundStage? @relation(fields: [stageId], references: [id], onDelete: SetNull)
+  memberId        String?
+  member          TeamMember? @relation(fields: [memberId], references: [id], onDelete: SetNull)
+  questionId      String?
+  question        Question?   @relation(fields: [questionId], references: [id], onDelete: SetNull)
+  answerText      String?
+  codeContent     String?
+  isAutoSubmitted Boolean     @default(false)
+  isFinal         Boolean     @default(false)
+  score           Float?
+  submittedAt     DateTime    @default(now())
+
+  @@index([teamId, roundId])
+  @@index([questionId])
+  @@map("submissions")
+}
+
+// 12. Round 4 Relay Code Snapshots
+model RelaySnapshot {
+  id           String       @id @default(uuid())
+  teamId       String
+  team         Team         @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  roundId      String
+  round        Round        @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  stageId      String?
+  stage        RoundStage?  @relation(fields: [stageId], references: [id], onDelete: SetNull)
+  memberId     String
+  member       TeamMember   @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  memberOrder  Int          // 1, 2, 3
+  codeContent  String
+  snapshotType SnapshotType
+  createdAt    DateTime     @default(now())
+
+  @@index([teamId, roundId])
+  @@index([teamId, snapshotType])
+  @@map("relay_snapshots")
+}
+
+// 13. Security Violation Log
+model SecurityEvent {
+  id            String        @id @default(uuid())
+  teamId        String
+  team          Team          @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  memberId      String?
+  member        TeamMember?   @relation(fields: [memberId], references: [id], onDelete: SetNull)
+  stageId       String?
+  stage         RoundStage?   @relation(fields: [stageId], references: [id], onDelete: SetNull)
+  violationType ViolationType
+  warningNumber Int           // 1, 2, or 3
+  actionTaken   String        // "WARNING", "FORCE_SUBMIT", "NONE"
+  metadata      Json          @default("{}")
+  createdAt     DateTime      @default(now())
+
+  @@index([teamId, createdAt])
+  @@map("security_events")
+}
+
+// 14. Organizer / System Audit Log
+model AuditLog {
+  id            String   @id @default(uuid())
+  actorId       String?
+  actor         User?    @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  actorUsername String
+  actorRole     Role
+  action        String
+  resource      String
+  resourceId    String?
+  metadata      Json     @default("{}")
+  createdAt     DateTime @default(now())
+
+  @@index([action, createdAt])
+  @@map("audit_logs")
+}
+
+// 15. Round Team Representative Lock (DB Level Unique Constraint)
+model RoundRepresentative {
+  id        String     @id @default(uuid())
+  roundId   String
+  round     Round      @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  teamId    String
+  team      Team       @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  memberId  String
+  member    TeamMember @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  claimedAt DateTime   @default(now())
+
+  @@unique([roundId, teamId])
+  @@map("round_representatives")
+}
