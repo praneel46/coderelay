@@ -38,11 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initLiveCountdown();
   initScrollReveals();
+  initRoundsSpineObserver();
   initPrizeCounter();
   initCtaSection();
   initFaqAccordion();
   initRegistrationModal();
   initBackToTop();
+  initFooterObserver();
   initHeroParallax();
 });
 
@@ -506,4 +508,86 @@ function initHeroParallax() {
       ticking = true;
     }
   }, { passive: true });
+}
+
+// ============================================================
+// LUMINOUS RELAY ROUNDS SPINE OBSERVER
+// Progressively illuminates relay waypoints & circuit spine
+// as each round enters view; resets on leave to replay on re-entry.
+// ============================================================
+function initRoundsSpineObserver() {
+  const waypoints = document.querySelectorAll(".spine-waypoint");
+  const progressFill = document.getElementById("spineProgressFill");
+  if (waypoints.length === 0) return;
+
+  if (PREFERS_REDUCED_MOTION) {
+    waypoints.forEach((wp) => wp.classList.add("is-active"));
+    if (progressFill) progressFill.style.height = "100%";
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-active");
+      } else {
+        entry.target.classList.remove("is-active");
+      }
+    });
+
+    // Update progress fill based on highest active waypoint
+    let highestActiveIndex = -1;
+    waypoints.forEach((wp, idx) => {
+      if (wp.classList.contains("is-active")) {
+        highestActiveIndex = idx;
+      }
+    });
+
+    if (progressFill) {
+      if (highestActiveIndex >= 0) {
+        const percent = ((highestActiveIndex + 1) / waypoints.length) * 100;
+        progressFill.style.height = `${percent}%`;
+      } else {
+        progressFill.style.height = "0%";
+      }
+    }
+  }, {
+    root: null,
+    threshold: 0.2,
+    rootMargin: "0px 0px -30px 0px"
+  });
+
+  waypoints.forEach((wp) => observer.observe(wp));
+}
+
+// ============================================================
+// FOOTER FINISH-LINE SCROLL OBSERVER
+// Triggers finish-line reveal sequence on viewport entry;
+// resets on exit so animation cleanly replays on re-entry.
+// ============================================================
+function initFooterObserver() {
+  const footer = document.getElementById("siteFooter");
+  if (!footer) return;
+
+  if (PREFERS_REDUCED_MOTION) {
+    footer.classList.add("is-revealed");
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        footer.classList.add("is-revealed");
+      } else {
+        // Element left viewport: reset so entrance replays on scroll return
+        footer.classList.remove("is-revealed");
+      }
+    });
+  }, {
+    root: null,
+    threshold: 0.1,
+    rootMargin: "0px 0px -20px 0px"
+  });
+
+  observer.observe(footer);
 }

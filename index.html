@@ -35,6 +35,7 @@
       <nav class="desktop-nav" aria-label="Main Navigation">
         <ul class="nav-links">
           <li><a href="#about" class="nav-link">ABOUT</a></li>
+          <li><a href="#rounds" class="nav-link">ROUNDS</a></li>
           <li><a href="#rules" class="nav-link">RULES</a></li>
           <li><a href="#faq" class="nav-link">FAQ</a></li>
           <li><a href="#contact" class="nav-link">CONTACT</a></li>
@@ -46,7 +47,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
             <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
           </svg>
-          <span class="text">REGISTER</span>
+          <span class="text">REGISTER NOW</span>
           <span class="circle"></span>
           <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
             <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
@@ -89,16 +90,20 @@
           <span class="link-idx">01</span>
           <span class="link-title">ABOUT</span>
         </a>
-        <a href="#rules" class="mobile-link">
+        <a href="#rounds" class="mobile-link">
           <span class="link-idx">02</span>
+          <span class="link-title">ROUNDS</span>
+        </a>
+        <a href="#rules" class="mobile-link">
+          <span class="link-idx">03</span>
           <span class="link-title">RULES</span>
         </a>
         <a href="#faq" class="mobile-link">
-          <span class="link-idx">03</span>
+          <span class="link-idx">04</span>
           <span class="link-title">FAQ</span>
         </a>
         <a href="#contact" class="mobile-link">
-          <span class="link-idx">04</span>
+          <span class="link-idx">05</span>
           <span class="link-title">CONTACT</span>
         </a>
       </nav>
@@ -108,7 +113,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
             <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
           </svg>
-          <span class="text">REGISTER</span>
+          <span class="text">REGISTER NOW</span>
           <span class="circle"></span>
           <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
             <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
@@ -176,15 +181,21 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
               <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
             </svg>
-            <span class="text">REGISTER</span>
+            <span class="text">REGISTER NOW</span>
             <span class="circle"></span>
             <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
               <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
             </svg>
           </a>
-          <a href="#rules" class="btn-secondary">
-            <span>VIEW RULES</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          <a href="#rules" class="animated-button btn-secondary-animated" aria-label="View Competition Rules">
+            <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
+              <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
+            <span class="text">VIEW RULES</span>
+            <span class="circle"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
+              <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
           </a>
         </div>
 
@@ -319,7 +330,7 @@
               </div>
             </div>
 
-            <!-- Main Clock Telemetry Row -->
+            <!-- Main Clock Telemetry Row (Unified Race Telemetry Instrument) -->
             <div class="timer-clock-row">
               <div class="timer-segment">
                 <div class="timer-digits-box">
@@ -328,7 +339,7 @@
                 <span class="timer-unit">DAYS</span>
               </div>
 
-              <span class="timer-separator" aria-hidden="true">:</span>
+              <div class="timer-divider" aria-hidden="true"></div>
 
               <div class="timer-segment">
                 <div class="timer-digits-box">
@@ -337,28 +348,22 @@
                 <span class="timer-unit">HOURS</span>
               </div>
 
-              <span class="timer-separator" aria-hidden="true">:</span>
+              <div class="timer-divider" aria-hidden="true"></div>
 
               <div class="timer-segment">
                 <div class="timer-digits-box">
                   <span class="timer-digit" id="timerMinutes">42</span>
                 </div>
-                <span class="timer-unit">
-                  <span class="unit-full">MINUTES</span>
-                  <span class="unit-short">MINS</span>
-                </span>
+                <span class="timer-unit">MINS</span>
               </div>
 
-              <span class="timer-separator" aria-hidden="true">:</span>
+              <div class="timer-divider" aria-hidden="true"></div>
 
               <div class="timer-segment active-segment">
                 <div class="timer-digits-box">
                   <span class="timer-digit pulse-accent" id="timerSeconds">18</span>
                 </div>
-                <span class="timer-unit">
-                  <span class="unit-full">SECONDS</span>
-                  <span class="unit-short">SECS</span>
-                </span>
+                <span class="timer-unit">SECS</span>
               </div>
             </div>
 
@@ -435,128 +440,269 @@
     </section>
 
     <!-- ============================================================
-         GENERAL RULES SECTION
+         COMPETITION ROUNDS — LUMINOUS RELAY PROGRESS SPINE
+         ============================================================ -->
+    <section class="section-container rounds-section" id="rounds">
+      <div class="container">
+        <div class="section-header text-center reveal-up">
+          <h2 class="section-title">THE RELAY</h2>
+          <p class="section-subtitle">FOUR COMPETITION STAGES. ONE UNIFIED RELAY TO THE FINISH LINE.</p>
+        </div>
+
+        <div class="relay-spine-container" id="relaySpine">
+          <!-- Continuous Central / Left Glowing Circuit Spine Track -->
+          <div class="spine-track-line" aria-hidden="true">
+            <div class="spine-progress-fill" id="spineProgressFill"></div>
+          </div>
+
+          <!-- Waypoint 00: START GATE -->
+          <div class="spine-waypoint start-waypoint" data-round="0">
+            <div class="spine-node-outer">
+              <div class="spine-node">
+                <span class="node-core"></span>
+              </div>
+            </div>
+            <div class="spine-waypoint-badge">START GATE // GRID LAUNCH</div>
+          </div>
+
+          <!-- Waypoint 01: ROUND 01 — CODE IQ -->
+          <div class="spine-waypoint round-waypoint" data-round="1">
+            <div class="spine-node-outer">
+              <div class="spine-node">
+                <span class="node-core"></span>
+              </div>
+            </div>
+            <div class="spine-card glass-panel">
+              <div class="spine-card-header">
+                <span class="spine-round-tag">ROUND 01</span>
+                <span class="spine-status-pill">QUALIFIER</span>
+              </div>
+              <h3 class="spine-round-title">ROUND 01 &mdash; CODE IQ</h3>
+              <p class="spine-round-desc">
+                Rapid-fire technical knowledge, algorithmic logic, and programming concepts executed at lightning speed.
+              </p>
+            </div>
+          </div>
+
+          <!-- Waypoint 02: ROUND 02 — TRIPLE STRIKE -->
+          <div class="spine-waypoint round-waypoint" data-round="2">
+            <div class="spine-node-outer">
+              <div class="spine-node">
+                <span class="node-core"></span>
+              </div>
+            </div>
+            <div class="spine-card glass-panel">
+              <div class="spine-card-header">
+                <span class="spine-round-tag">ROUND 02</span>
+                <span class="spine-status-pill">KNOCKOUT</span>
+              </div>
+              <h3 class="spine-round-title">ROUND 02 &mdash; TRIPLE STRIKE</h3>
+              <p class="spine-round-desc">
+                Intensive code analysis, precision debugging, output prediction, and synchronized team execution.
+              </p>
+            </div>
+          </div>
+
+          <!-- Waypoint 03: ROUND 03 — CODE AUCTION -->
+          <div class="spine-waypoint round-waypoint" data-round="3">
+            <div class="spine-node-outer">
+              <div class="spine-node">
+                <span class="node-core"></span>
+              </div>
+            </div>
+            <div class="spine-card glass-panel">
+              <div class="spine-card-header">
+                <span class="spine-round-tag">ROUND 03</span>
+                <span class="spine-status-pill">STRATEGIC</span>
+              </div>
+              <h3 class="spine-round-title">ROUND 03 &mdash; CODE AUCTION</h3>
+              <div class="spine-tagline-quote">&ldquo;BID. BREAK. WIN.&rdquo;</div>
+              <p class="spine-round-desc">
+                High-stakes strategic problem bidding where teams wager on algorithmic challenges under clock pressure.
+              </p>
+            </div>
+          </div>
+
+          <!-- Waypoint 04: ROUND 04 — RELAY FINALE -->
+          <div class="spine-waypoint round-waypoint" data-round="4">
+            <div class="spine-node-outer">
+              <div class="spine-node">
+                <span class="node-core"></span>
+              </div>
+            </div>
+            <div class="spine-card glass-panel final-round-card">
+              <div class="spine-card-header">
+                <span class="spine-round-tag">ROUND 04</span>
+                <span class="spine-status-pill pulse-pill">CHAMPIONSHIP</span>
+              </div>
+              <h3 class="spine-round-title">ROUND 04 &mdash; RELAY FINALE</h3>
+              <p class="spine-round-desc">
+                The ultimate baton relay showdown: three team members pass the live codebase to claim the championship.
+              </p>
+            </div>
+          </div>
+
+          <!-- Waypoint 05: FINISH LINE -->
+          <div class="spine-waypoint finish-waypoint" data-round="5">
+            <div class="spine-node-outer">
+              <div class="spine-node finish-node">
+                <span class="node-core"></span>
+              </div>
+            </div>
+            <div class="spine-waypoint-badge finish-badge">FINISH LINE // PODIUM</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         GENERAL RULES — PROTOCOL CIRCUIT
          ============================================================ -->
     <section class="section-container rules-section" id="rules">
       <div class="container">
         <div class="section-header reveal-up">
           <h2 class="section-title">GENERAL RULES</h2>
-          <p class="section-subtitle">Follow competition protocol for fair and seamless execution.</p>
+          <p class="section-subtitle">Official competition protocols for fair, secure, and seamless execution.</p>
         </div>
 
-        <div class="rules-grid reveal-stagger">
+        <div class="protocol-circuit-grid reveal-stagger">
           
-          <!-- Rule 01 -->
-          <article class="rule-card glass-panel">
-            <div class="rule-card-header">
-              <span class="rule-index">01</span>
-              <div class="rule-status-dot"></div>
+          <!-- Protocol 01: TEAM COMPOSITION -->
+          <article class="protocol-item glass-panel">
+            <div class="protocol-sidebar">
+              <span class="protocol-idx">01</span>
+              <span class="protocol-status-tag status-mandatory">MANDATORY</span>
             </div>
-            <h3 class="rule-title">TEAM COMPOSITION</h3>
-            <p class="rule-desc">
-              Each team must consist of exactly 3 members. Members may be from different colleges, and the same members must remain throughout all rounds.
-            </p>
+            <div class="protocol-main">
+              <div class="protocol-meta">PROTOCOL // TEAM FORMATION</div>
+              <h3 class="protocol-title">TEAM COMPOSITION</h3>
+              <p class="protocol-desc">
+                Each team must consist of exactly 3 members. Members may be from different colleges, and the same members must remain throughout all rounds.
+              </p>
+            </div>
           </article>
 
-          <!-- Rule 02 -->
-          <article class="rule-card glass-panel">
-            <div class="rule-card-header">
-              <span class="rule-index">02</span>
-              <div class="rule-status-dot"></div>
+          <!-- Protocol 02: TEAM ID -->
+          <article class="protocol-item glass-panel">
+            <div class="protocol-sidebar">
+              <span class="protocol-idx">02</span>
+              <span class="protocol-status-tag status-active">ASSIGNED</span>
             </div>
-            <h3 class="rule-title">TEAM ID</h3>
-            <p class="rule-desc">
-              Each team will be assigned a unique Team ID, which must be used throughout the event for identification and submissions.
-            </p>
+            <div class="protocol-main">
+              <div class="protocol-meta">PROTOCOL // AUTHENTICATION</div>
+              <h3 class="protocol-title">TEAM ID</h3>
+              <p class="protocol-desc">
+                Each team will be assigned a unique Team ID, which must be used throughout the event for identification and submissions.
+              </p>
+            </div>
           </article>
 
-          <!-- Rule 03 -->
-          <article class="rule-card glass-panel">
-            <div class="rule-card-header">
-              <span class="rule-index">03</span>
-              <div class="rule-status-dot"></div>
+          <!-- Protocol 03: REPORTING & CONDUCT -->
+          <article class="protocol-item glass-panel">
+            <div class="protocol-sidebar">
+              <span class="protocol-idx">03</span>
+              <span class="protocol-status-tag status-required">REQUIRED</span>
             </div>
-            <h3 class="rule-title">REPORTING &amp; CONDUCT</h3>
-            <p class="rule-desc">
-              Participants must report before the scheduled time and follow the instructions of the event coordinators, judges, and technical team. Professional and respectful conduct is expected throughout the event.
-            </p>
+            <div class="protocol-main">
+              <div class="protocol-meta">PROTOCOL // DISCIPLINE</div>
+              <h3 class="protocol-title">REPORTING &amp; CONDUCT</h3>
+              <p class="protocol-desc">
+                Participants must report before the scheduled time and follow the instructions of the event coordinators, judges, and technical team. Professional and respectful conduct is expected throughout the event.
+              </p>
+            </div>
           </article>
 
-          <!-- Rule 04 -->
-          <article class="rule-card glass-panel">
-            <div class="rule-card-header">
-              <span class="rule-index">04</span>
-              <div class="rule-status-dot"></div>
+          <!-- Protocol 04: PERMITTED RESOURCES -->
+          <article class="protocol-item glass-panel">
+            <div class="protocol-sidebar">
+              <span class="protocol-idx">04</span>
+              <span class="protocol-status-tag status-restricted">RESTRICTED</span>
             </div>
-            <h3 class="rule-title">PERMITTED RESOURCES</h3>
-            <p class="rule-desc">
-              Participants may use only the resources, devices, software, and environment permitted for each round. Unauthorized websites, applications, external assistance, or resources are prohibited.
-            </p>
+            <div class="protocol-main">
+              <div class="protocol-meta">PROTOCOL // ENVIRONMENT</div>
+              <h3 class="protocol-title">PERMITTED RESOURCES</h3>
+              <p class="protocol-desc">
+                Participants may use only the resources, devices, software, and environment permitted for each round. Unauthorized websites, applications, external assistance, or resources are prohibited.
+              </p>
+            </div>
           </article>
 
-          <!-- Rule 05 -->
-          <article class="rule-card glass-panel">
-            <div class="rule-card-header">
-              <span class="rule-index">05</span>
-              <div class="rule-status-dot"></div>
+          <!-- Protocol 05: FAIR PLAY -->
+          <article class="protocol-item glass-panel protocol-critical">
+            <div class="protocol-sidebar">
+              <span class="protocol-idx">05</span>
+              <span class="protocol-status-tag status-critical">CRITICAL</span>
             </div>
-            <h3 class="rule-title">FAIR PLAY</h3>
-            <p class="rule-desc">
-              Sharing or copying code, answers, solutions, or receiving assistance from other teams, spectators, or unauthorized sources is strictly prohibited. Any attempt to manipulate the platform, timer, scores, or submissions may lead to disqualification.
-            </p>
+            <div class="protocol-main">
+              <div class="protocol-meta">PROTOCOL // INTEGRITY</div>
+              <h3 class="protocol-title">FAIR PLAY</h3>
+              <p class="protocol-desc">
+                Sharing or copying code, answers, solutions, or receiving assistance from other teams, spectators, or unauthorized sources is strictly prohibited. Any attempt to manipulate the platform, timer, scores, or submissions may lead to disqualification.
+              </p>
+            </div>
           </article>
 
-          <!-- Rule 06 -->
-          <article class="rule-card glass-panel">
-            <div class="rule-card-header">
-              <span class="rule-index">06</span>
-              <div class="rule-status-dot"></div>
+          <!-- Protocol 06: SUBMISSIONS & TECHNICAL ISSUES -->
+          <article class="protocol-item glass-panel">
+            <div class="protocol-sidebar">
+              <span class="protocol-idx">06</span>
+              <span class="protocol-status-tag status-strict">DEADLINE</span>
             </div>
-            <h3 class="rule-title">SUBMISSIONS &amp; TECHNICAL ISSUES</h3>
-            <p class="rule-desc">
-              All submissions must be completed within the specified time limit. Late submissions will not be considered. Genuine technical issues must be reported immediately to the technical team.
-            </p>
+            <div class="protocol-main">
+              <div class="protocol-meta">PROTOCOL // SUBMISSIONS</div>
+              <h3 class="protocol-title">SUBMISSIONS &amp; TECHNICAL ISSUES</h3>
+              <p class="protocol-desc">
+                All submissions must be completed within the specified time limit. Late submissions will not be considered. Genuine technical issues must be reported immediately to the technical team.
+              </p>
+            </div>
           </article>
 
-          <!-- Rule 07 -->
-          <article class="rule-card glass-panel">
-            <div class="rule-card-header">
-              <span class="rule-index">07</span>
-              <div class="rule-status-dot"></div>
+          <!-- Protocol 07: SCORING & DECISIONS -->
+          <article class="protocol-item glass-panel">
+            <div class="protocol-sidebar">
+              <span class="protocol-idx">07</span>
+              <span class="protocol-status-tag status-final">FINAL</span>
             </div>
-            <h3 class="rule-title">SCORING &amp; DECISIONS</h3>
-            <p class="rule-desc">
-              Official submissions, timestamps, and system records will be used for scoring and verification. The decision of the authorized judging/event committee regarding scoring, qualification, and disqualification will be final.
-            </p>
+            <div class="protocol-main">
+              <div class="protocol-meta">PROTOCOL // ADJUDICATION</div>
+              <h3 class="protocol-title">SCORING &amp; DECISIONS</h3>
+              <p class="protocol-desc">
+                Official submissions, timestamps, and system records will be used for scoring and verification. The decision of the authorized judging/event committee regarding scoring, qualification, and disqualification will be final.
+              </p>
+            </div>
           </article>
 
-          <!-- Rule 08 -->
-          <article class="rule-card glass-panel rule-featured">
-            <div class="rule-card-header">
-              <span class="rule-index">08</span>
-              <div class="rule-badge-special">DISTRIBUTION</div>
+          <!-- Protocol 08: PRIZE DISTRIBUTION -->
+          <article class="protocol-item glass-panel protocol-featured">
+            <div class="protocol-sidebar">
+              <span class="protocol-idx">08</span>
+              <span class="protocol-status-tag status-reward">AWARDS</span>
             </div>
-            <h3 class="rule-title">PRIZE DISTRIBUTION</h3>
-            <p class="rule-desc">
-              Prize distribution will depend on the number of registered teams:
-            </p>
-            <div class="rule-tiers">
-              <div class="tier-row">
-                <span class="tier-label">Fewer than 15 teams:</span>
-                <span class="tier-val">First Place only</span>
+            <div class="protocol-main">
+              <div class="protocol-meta">PROTOCOL // PRIZE DISTRIBUTION</div>
+              <h3 class="protocol-title">PRIZE DISTRIBUTION</h3>
+              <p class="protocol-desc">
+                Prize distribution will depend on the number of registered teams:
+              </p>
+              <div class="rule-tiers">
+                <div class="tier-row">
+                  <span class="tier-label">Fewer than 15 teams:</span>
+                  <span class="tier-val">First Place only</span>
+                </div>
+                <div class="tier-row">
+                  <span class="tier-label">20+ teams:</span>
+                  <span class="tier-val">First &amp; Second Place</span>
+                </div>
+                <div class="tier-row">
+                  <span class="tier-label">30+ teams:</span>
+                  <span class="tier-val">First, Second &amp; Third Place</span>
+                </div>
               </div>
-              <div class="tier-row">
-                <span class="tier-label">20+ teams:</span>
-                <span class="tier-val">First &amp; Second Place</span>
-              </div>
-              <div class="tier-row">
-                <span class="tier-label">30+ teams:</span>
-                <span class="tier-val">First, Second &amp; Third Place</span>
-              </div>
+              <p class="rule-subnote">
+                The organizing committee may make necessary changes to the schedule or competition procedure due to technical or logistical circumstances.
+              </p>
             </div>
-            <p class="rule-subnote">
-              The organizing committee may make necessary changes to the schedule or competition procedure due to technical or logistical circumstances.
-            </p>
           </article>
 
         </div>
@@ -839,15 +985,21 @@
                   <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
                     <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
                   </svg>
-                  <span class="text">REGISTER</span>
+                  <span class="text">REGISTER NOW</span>
                   <span class="circle"></span>
                   <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
                     <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
                   </svg>
                 </a>
-                <a href="#rules" class="btn-secondary cta-btn-rules cta-anim-item" data-anim-step="7">
-                  <span>VIEW RULES</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                <a href="#rules" class="animated-button btn-secondary-animated cta-btn-rules cta-anim-item" data-anim-step="7" aria-label="View Competition Rules">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
+                    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                  </svg>
+                  <span class="text">VIEW RULES</span>
+                  <span class="circle"></span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
+                    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                  </svg>
                 </a>
               </div>
 
@@ -940,37 +1092,28 @@
   </main>
 
   <!-- ============================================================
-       FOOTER SECTION (COMPACT SIGNATURE)
+       FOOTER SECTION (MINIMAL FINISH-LINE SIGNATURE)
        ============================================================ -->
-  <footer class="site-footer">
-    <div class="footer-ambient-line" aria-hidden="true"></div>
+  <footer class="site-footer" id="siteFooter">
+    <!-- Thin Cyan Technical Finish-Line Divider -->
+    <div class="footer-finish-line" aria-hidden="true"></div>
+
     <div class="container">
-      <div class="footer-compact-inner text-center reveal-up">
-        
-        <!-- Primary Brand & Tagline -->
-        <div class="footer-brand-block">
-          <div class="footer-brand-title">
-            <span class="brand-vigyantra">VIGYANTRA</span> <span class="brand-year-accent">2026</span>
-          </div>
-          <div class="footer-event-title">
-            <span class="text-white">CODE</span> <span class="text-cyan">RELAY</span>
-          </div>
-          <p class="footer-tagline">THINK. CODE. DEBUG. RELAY.</p>
+      <div class="footer-inner">
+        <!-- Left: Brand Identity & Legal -->
+        <div class="footer-col footer-col-left">
+          <span class="footer-brand">VIGYANTRA 2026</span>
+          <span class="footer-meta">ALL RIGHTS RESERVED.</span>
         </div>
 
-        <!-- Thin Technical Divider -->
-        <div class="footer-divider-rail" aria-hidden="true">
-          <span class="f-rail-line left"></span>
-          <span class="f-rail-node"></span>
-          <span class="f-rail-line right"></span>
-        </div>
+        <!-- Mobile-Only Subtle Technical Divider -->
+        <div class="footer-mobile-divider" aria-hidden="true"></div>
 
-        <!-- Closing Metadata -->
-        <div class="footer-meta-block">
-          <p class="footer-copy">2026 VIGYANTRA &bull; ALL RIGHTS RESERVED.</p>
-          <p class="footer-subinfo"><span class="text-cyan">CODE RELAY</span> &bull; 30 OCTOBER &bull; SJBIT BENGALURU</p>
+        <!-- Right: Event Date & Venue -->
+        <div class="footer-col footer-col-right">
+          <span class="footer-date">30 OCTOBER 2026</span>
+          <span class="footer-venue">SJBIT BENGALURU</span>
         </div>
-
       </div>
     </div>
   </footer>
@@ -984,37 +1127,6 @@
       <polyline points="5 12 12 5 19 12"></polyline>
     </svg>
   </button>
-
-  <!-- ============================================================
-       REGISTRATION MODAL / NOTICE POPUP
-       ============================================================ -->
-  <div class="modal-overlay" id="registrationModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-backdrop" id="modalBackdrop"></div>
-    <div class="modal-card glass-panel">
-      <div class="modal-corner tl"></div>
-      <div class="modal-corner tr"></div>
-      <div class="modal-corner bl"></div>
-      <div class="modal-corner br"></div>
-
-      <div class="modal-icon-badge">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-      </div>
-
-      <div class="modal-content text-center">
-        <div class="modal-tag">// OFFICIAL NOTICE //</div>
-        <h3 class="modal-title" id="modalTitle">REGISTRATION FORM COMING SOON</h3>
-        <p class="modal-desc">
-          Registration will open shortly. The official registration form will be linked here once it is available.
-        </p>
-      </div>
-
-      <div class="modal-actions">
-        <button type="button" class="btn-primary w-full" id="modalCloseBtn">
-          <span>OKAY</span>
-        </button>
-      </div>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>
