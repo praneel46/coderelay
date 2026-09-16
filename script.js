@@ -210,28 +210,37 @@ function initLiveCountdown() {
 // Every time it leaves viewport -> resets so it replays upon return
 // ============================================================
 function initScrollReveals() {
+  const revealElements = document.querySelectorAll(".reveal-up, .reveal-scale, .reveal-stagger");
+
   if (PREFERS_REDUCED_MOTION) {
-    document.querySelectorAll(".reveal-up, .reveal-scale, .reveal-stagger").forEach((el) => {
+    revealElements.forEach((el) => {
       el.classList.add("is-revealed");
     });
     return;
   }
 
-  const revealElements = document.querySelectorAll(".reveal-up, .reveal-scale, .reveal-stagger");
+  // Dynamic listener for accessibility changes
+  try {
+    window.matchMedia("(prefers-reduced-motion: reduce)").addEventListener("change", (e) => {
+      if (e.matches) {
+        revealElements.forEach((el) => el.classList.add("is-revealed"));
+      }
+    });
+  } catch (_) {}
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("is-revealed");
       } else {
-        // Element left viewport: reset so entrance replays on scroll return
+        // Element left viewport: reset so entrance cleanly replays on scroll return
         entry.target.classList.remove("is-revealed");
       }
     });
   }, {
     root: null,
     threshold: 0.1,
-    rootMargin: "0px 0px -40px 0px"
+    rootMargin: "0px 0px -30px 0px"
   });
 
   revealElements.forEach((el) => observer.observe(el));

@@ -115,28 +115,52 @@ body {
   padding: 7.25rem 0;
   position: relative;
   overflow: hidden;
+  background: transparent;
 }
 
-/* Continuous Telemetry Horizon Connector between adjacent sections */
-.section-container + .section-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 1140px;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.03) 15%,
-    rgba(0, 210, 255, 0.22) 50%,
-    rgba(255, 255, 255, 0.03) 85%,
-    transparent 100%
-  );
+/* ============================================================
+   GLOBAL POST-HERO CONTINUOUS ATMOSPHERE
+   Single persistent environment across the entire page
+   ============================================================ */
+.global-atmosphere {
+  position: fixed;
+  inset: 0;
   pointer-events: none;
-  z-index: 2;
+  z-index: 0;
+  overflow: hidden;
+  background-color: var(--bg-black);
+}
+
+.global-ambient-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 85% 60% at 50% 25%, rgba(10, 25, 54, 0.42) 0%, transparent 68%),
+    radial-gradient(ellipse 65% 50% at 85% 65%, rgba(0, 210, 255, 0.035) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 45% at 15% 75%, rgba(37, 99, 235, 0.035) 0%, transparent 60%);
+}
+
+.global-tech-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 210, 255, 0.016) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 210, 255, 0.016) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 90% 85% at 50% 50%, black 40%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 85% at 50% 50%, black 40%, transparent 95%);
+  opacity: 0.8;
+}
+
+.global-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 55%, rgba(1, 4, 10, 0.55) 100%);
+}
+
+#main-content {
+  position: relative;
+  z-index: 1;
 }
 
 
@@ -1493,23 +1517,7 @@ body {
    COUNTDOWN SECTION
    ============================================================ */
 .countdown-section {
-  background: radial-gradient(circle at 50% 0%, rgba(14, 27, 54, 0.45) 0%, var(--bg-black) 70%);
-}
-
-.glow-orb {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  filter: blur(80px);
-}
-
-.orb-blue {
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 500px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(0, 210, 255, 0.15) 0%, transparent 70%);
+  background: transparent;
 }
 
 /* ============================================================
@@ -1734,7 +1742,7 @@ body {
 .prize-section {
   position: relative;
   overflow: hidden;
-  background: radial-gradient(circle at 50% 50%, rgba(4, 14, 32, 0.65) 0%, var(--bg-black) 75%);
+  background: transparent;
 }
 
 /* Theatrical Atmospheric Lighting Core */
@@ -1752,22 +1760,13 @@ body {
   width: 900px;
   height: 520px;
   max-width: 95vw;
-  background: radial-gradient(ellipse 65% 55% at 50% 50%, rgba(0, 210, 255, 0.18) 0%, rgba(2, 132, 199, 0.08) 45%, transparent 70%);
+  background: radial-gradient(ellipse 65% 55% at 50% 50%, rgba(0, 210, 255, 0.12) 0%, rgba(2, 132, 199, 0.05) 45%, transparent 70%);
   filter: blur(50px);
   animation: prizeGlowPulse 6s ease-in-out infinite alternate;
 }
 
 .prize-flare-line {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  max-width: 1100px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(0, 210, 255, 0.25) 25%, rgba(0, 210, 255, 0.8) 50%, rgba(0, 210, 255, 0.25) 75%, transparent 100%);
-  box-shadow: 0 0 24px rgba(0, 210, 255, 0.45);
-  opacity: 0.65;
+  display: none;
 }
 
 @keyframes prizeGlowPulse {
@@ -2072,7 +2071,7 @@ body {
 
 .relay-spine-container {
   position: relative;
-  max-width: 860px;
+  max-width: 880px;
   margin: 3.5rem auto 0;
   padding: 1rem 0;
 }
@@ -2809,7 +2808,7 @@ body {
 .cta-section {
   position: relative;
   overflow: hidden;
-  background: radial-gradient(circle at 50% 50%, rgba(4, 15, 36, 0.75) 0%, var(--bg-black) 78%);
+  background: transparent;
 }
 
 /* Atmospheric Lighting Core */
@@ -2827,7 +2826,7 @@ body {
   width: 900px;
   height: 520px;
   max-width: 95vw;
-  background: radial-gradient(ellipse 65% 55% at 50% 45%, rgba(0, 210, 255, 0.16) 0%, rgba(2, 132, 199, 0.06) 45%, transparent 70%);
+  background: radial-gradient(ellipse 65% 55% at 50% 45%, rgba(0, 210, 255, 0.12) 0%, rgba(2, 132, 199, 0.04) 45%, transparent 70%);
   filter: blur(55px);
   animation: ctaGlowPulse 7s ease-in-out infinite alternate;
 }
@@ -3328,11 +3327,11 @@ body {
    FOOTER SECTION (MINIMAL FINISH-LINE SIGNATURE)
    ============================================================ */
 .site-footer {
-  background: #02050c;
+  background: linear-gradient(180deg, transparent 0%, rgba(2, 5, 12, 0.75) 40%, #02050c 100%);
   position: relative;
   overflow: hidden;
-  padding: 3rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 3.5rem 0 3rem 0;
+  border-top: none;
 }
 
 /* Thin Cyan Finish-Line Progress Indicator */
@@ -3607,11 +3606,26 @@ body {
 }
 
 /* ============================================================
-   SCROLL REVEAL ANIMATION SYSTEM
+   UNIFIED SCROLL REVEAL SYSTEM
+   Cinematic, GPU-accelerated reveal choreography with replay
    ============================================================ */
+
+/* Base Reveal Primitive: Vertical Entry */
 .reveal-up {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(16px);
+  filter: blur(2px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--delay, 0s);
+  will-change: opacity, transform, filter;
+}
+
+/* Base Reveal Primitive: Subtle Scale */
+.reveal-scale {
+  opacity: 0;
+  transform: translateY(16px) scale(0.98);
   filter: blur(2px);
   transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
@@ -3620,27 +3634,110 @@ body {
   will-change: opacity, transform, filter;
 }
 
-.reveal-scale {
-  opacity: 0;
-  transform: translateY(20px) scale(0.97);
-  filter: blur(3px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform, filter;
-}
-
+/* Base Reveal Primitive: Staggered Container Children */
 .reveal-stagger > * {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(14px);
   filter: blur(2px);
-  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform, filter;
 }
 
-/* Active states toggled by IntersectionObserver (repeats on scroll enter/leave) */
+/* Lateral Directional Accent: Sequence Steps (Desktop only) */
+.about-sequence.reveal-stagger > * {
+  transform: translateX(-10px);
+}
+
+/* ------------------------------------------------------------
+   SECTION ENTRY CONTROLLED CHOREOGRAPHY:
+   Eyebrow (0ms) -> Heading (80ms) -> Description (160ms)
+   ------------------------------------------------------------ */
+.section-header.reveal-up,
+.about-header-group.reveal-up {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+.section-header.reveal-up .section-eyebrow,
+.about-header-group.reveal-up .section-eyebrow {
+  opacity: 0;
+  transform: translateY(10px);
+  filter: blur(2px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0s,
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0s,
+              filter 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0s;
+  will-change: opacity, transform, filter;
+}
+
+.section-header.reveal-up .section-title,
+.about-header-group.reveal-up .about-title,
+.prize-header.reveal-up .prize-title {
+  opacity: 0;
+  transform: translateY(14px);
+  filter: blur(2px);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
+              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
+              filter 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
+  will-change: opacity, transform, filter;
+}
+
+.section-header.reveal-up .section-subtitle,
+.about-header-group.reveal-up .about-lead {
+  opacity: 0;
+  transform: translateY(12px);
+  filter: blur(2px);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.16s,
+              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.16s,
+              filter 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.16s;
+  will-change: opacity, transform, filter;
+}
+
+/* Header Active States on Intersection */
+.section-header.reveal-up.is-revealed .section-eyebrow,
+.about-header-group.reveal-up.is-revealed .section-eyebrow {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
+}
+
+.section-header.reveal-up.is-revealed .section-title,
+.about-header-group.reveal-up.is-revealed .about-title,
+.prize-header.reveal-up.is-revealed .prize-title {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
+}
+
+.section-header.reveal-up.is-revealed .section-subtitle,
+.about-header-group.reveal-up.is-revealed .about-lead {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
+}
+
+/* ------------------------------------------------------------
+   MAIN SECTION CONTENT DELAY (Cascades naturally after Header)
+   ------------------------------------------------------------ */
+.section-container .countdown-open-display.reveal-up {
+  transition-delay: 0.22s;
+}
+
+.section-container .timer-footer.reveal-up {
+  transition-delay: 0.32s;
+}
+
+.section-container .prize-distribution-panel.reveal-up {
+  transition-delay: 0.24s;
+}
+
+.section-container .location-box.reveal-scale {
+  transition-delay: 0.26s;
+}
+
+/* Standard Revealed Active States */
 .reveal-up.is-revealed,
 .reveal-scale.is-revealed {
   opacity: 1;
@@ -3650,18 +3747,19 @@ body {
 
 .reveal-stagger.is-revealed > * {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) translateX(0);
   filter: blur(0px);
 }
 
-.reveal-stagger.is-revealed > *:nth-child(1) { transition-delay: 0.05s; }
-.reveal-stagger.is-revealed > *:nth-child(2) { transition-delay: 0.13s; }
-.reveal-stagger.is-revealed > *:nth-child(3) { transition-delay: 0.21s; }
-.reveal-stagger.is-revealed > *:nth-child(4) { transition-delay: 0.29s; }
-.reveal-stagger.is-revealed > *:nth-child(5) { transition-delay: 0.37s; }
-.reveal-stagger.is-revealed > *:nth-child(6) { transition-delay: 0.45s; }
-.reveal-stagger.is-revealed > *:nth-child(7) { transition-delay: 0.53s; }
-.reveal-stagger.is-revealed > *:nth-child(8) { transition-delay: 0.61s; }
+/* Stagger Interval Delays (Cascading after header) */
+.reveal-stagger.is-revealed > *:nth-child(1) { transition-delay: 0.18s; }
+.reveal-stagger.is-revealed > *:nth-child(2) { transition-delay: 0.26s; }
+.reveal-stagger.is-revealed > *:nth-child(3) { transition-delay: 0.34s; }
+.reveal-stagger.is-revealed > *:nth-child(4) { transition-delay: 0.42s; }
+.reveal-stagger.is-revealed > *:nth-child(5) { transition-delay: 0.50s; }
+.reveal-stagger.is-revealed > *:nth-child(6) { transition-delay: 0.58s; }
+.reveal-stagger.is-revealed > *:nth-child(7) { transition-delay: 0.66s; }
+.reveal-stagger.is-revealed > *:nth-child(8) { transition-delay: 0.74s; }
 
 /* ============================================================
    RESPONSIVENESS & COMPOSITIONAL DESIGN SYSTEM
@@ -3913,9 +4011,35 @@ body {
   .section-container {
     padding: 4.75rem 0;
   }
-  .section-container + .section-container::before {
-    max-width: 90%;
-    opacity: 0.8;
+
+  /* Mobile Animation Restraint: 0px horizontal transform to prevent overflow */
+  .about-sequence.reveal-stagger > * {
+    transform: translateY(12px);
+  }
+
+  .reveal-up {
+    transform: translateY(12px);
+  }
+
+  .reveal-scale {
+    transform: translateY(12px) scale(0.99);
+  }
+
+  .reveal-stagger > * {
+    transform: translateY(10px);
+  }
+
+  .section-header.reveal-up .section-eyebrow,
+  .about-header-group.reveal-up .section-eyebrow,
+  .section-header.reveal-up .section-title,
+  .about-header-group.reveal-up .about-title,
+  .section-header.reveal-up .section-subtitle,
+  .about-header-group.reveal-up .about-lead {
+    transform: translateY(8px);
+  }
+
+  .spine-waypoint.is-active .spine-card {
+    transform: none;
   }
 
   .site-header {
@@ -4803,6 +4927,14 @@ body {
   .reveal-up,
   .reveal-scale,
   .reveal-stagger > *,
+  .section-header.reveal-up .section-eyebrow,
+  .section-header.reveal-up .section-title,
+  .section-header.reveal-up .section-subtitle,
+  .about-header-group.reveal-up .section-eyebrow,
+  .about-header-group.reveal-up .about-title,
+  .about-header-group.reveal-up .about-lead,
+  .prize-header.reveal-up .prize-title,
+  .cta-anim-item,
   .footer-finish-line,
   .footer-col-left,
   .footer-col-right,
@@ -4819,6 +4951,7 @@ body {
   .rule-node-core {
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
     animation: none !important;
     transition: none !important;
   }
