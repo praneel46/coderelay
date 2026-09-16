@@ -4017,40 +4017,56 @@ body {
     font-size: 1.2rem;
   }
   
-  /* Vertically stacked round cards */
-  .round-row-card {
-    display: flex;
-    flex-direction: column;
+  /* Relay Spine (Stages / Rounds) Mobile Responsive Adaptation */
+  .relay-spine-container {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 2.5rem;
+    padding: 0.5rem 0;
+  }
+
+  .spine-track-line {
+    left: 15px;
+    top: 18px;
+    bottom: 18px;
+  }
+
+  .spine-waypoint {
     gap: 1rem;
-    padding: 1.75rem 1.4rem;
-    border-radius: 18px;
-  }
-  
-  .round-num-col {
-    flex-direction: row;
-    align-items: center;
-  }
-  
-  .round-unified-label {
-    font-size: 0.98rem;
-    padding: 0.45rem 0.95rem;
+    margin-bottom: 2rem;
   }
 
-  .round-unified-num {
-    font-size: 1.05rem;
+  .spine-node-outer {
+    width: 32px;
   }
 
-  .round-name {
-    font-size: 1.4rem;
+  .spine-node {
+    width: 22px;
+    height: 22px;
   }
 
-  .round-desc {
-    font-size: 0.92rem;
-    line-height: 1.6;
+  .node-core {
+    width: 6px;
+    height: 6px;
   }
-  
-  .round-arrow-col {
-    display: none;
+
+  .spine-card {
+    padding: 1.15rem 1.15rem;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .spine-round-title {
+    font-size: 1.15rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  .spine-waypoint-badge {
+    font-size: 0.72rem;
+    padding: 0.35rem 0.85rem;
+    letter-spacing: 0.12em;
   }
   
   .rules-timeline-container {
@@ -4115,6 +4131,168 @@ body {
 
   .prize-tier-card {
     padding: 1.75rem 1.25rem;
+  }
+
+  /* ============================================================
+     WHY CODE RELAY — SINGLE COLUMN MOBILE RESPONSIVE
+     Prevents multi-column leak & horizontal overflow on mobile
+     ============================================================ */
+  .why-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    gap: 1.25rem;
+  }
+
+  .why-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 1.75rem 1.4rem;
+  }
+
+  .why-title {
+    font-size: 1.2rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  .why-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+  }
+
+  /* ============================================================
+     EVENT COORDINATORS — SINGLE COLUMN MOBILE RESPONSIVE
+     Stacked card layout, perfectly contained within viewport
+     ============================================================ */
+  .coordinators-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .coordinator-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 1.35rem 1.15rem;
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+  }
+
+  .coord-photo-wrapper {
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+  }
+
+  .coord-details {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .coord-role {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+  }
+
+  .coord-name {
+    font-size: 1.15rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  .coord-phone-link {
+    font-size: 0.9rem;
+  }
+
+  .btn-call-icon {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+  }
+
+  /* ============================================================
+     OFFICIAL VENUE / LOCATION BOX — MOBILE RESPONSIVE
+     ============================================================ */
+  .location-box {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 1.75rem 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .location-content {
+    flex: 1 1 100%;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .location-city {
+    font-size: 1.35rem;
+    line-height: 1.2;
+  }
+
+  .location-address {
+    max-width: 100%;
+    font-size: 0.9rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  .btn-map {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ============================================================
+     FAQ ACCORDION — MOBILE RESPONSIVE
+     ============================================================ */
+  .faq-accordion {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .faq-item {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .faq-trigger {
+    padding: 1.25rem 1.15rem;
+    gap: 0.85rem;
+  }
+
+  .faq-question {
+    font-size: 1.02rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  .faq-inner {
+    padding: 0 1.15rem 1.25rem 1.15rem;
+    font-size: 0.92rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
   
   .prize-section {
@@ -4389,9 +4567,8 @@ body {
     line-height: 1.5;
   }
 
-  .round-row-card {
-    padding: 1.35rem 1.1rem;
-    border-radius: 14px;
+  .why-card {
+    padding: 1.45rem 1.2rem;
   }
 
   .coordinator-card {
@@ -4520,6 +4697,15 @@ body {
 
   .animated-button .text {
     letter-spacing: 0.1em;
+  }
+
+  .why-card {
+    padding: 1.35rem 1.05rem;
+  }
+
+  .coordinator-card {
+    padding: 1.05rem 0.85rem;
+    gap: 0.75rem;
   }
 
   .coord-photo-wrapper {
