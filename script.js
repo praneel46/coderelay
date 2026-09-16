@@ -161,13 +161,13 @@ function initLiveCountdown() {
     const formatted = String(newVal).padStart(2, "0");
     if (lastVals[key] !== formatted) {
       if (!PREFERS_REDUCED_MOTION && lastVals[key] !== null) {
-        element.style.opacity = "0";
-        element.style.transform = "translateY(-6px)";
+        element.style.opacity = "0.2";
+        element.style.transform = "translateY(-3.5px)";
         setTimeout(() => {
           element.textContent = formatted;
           element.style.opacity = "1";
           element.style.transform = "translateY(0)";
-        }, 150);
+        }, 140);
       } else {
         element.textContent = formatted;
       }
