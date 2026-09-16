@@ -2156,11 +2156,11 @@ body {
   box-shadow: 0 0 12px #facc15;
 }
 
-/* Spine Round Cards */
+/* Spine Round Cards (Title Focused) */
 .spine-card {
   flex: 1;
   min-width: 0;
-  padding: 2rem 2.4rem;
+  padding: 1.35rem 2.2rem;
   background: rgba(6, 12, 24, 0.75);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
@@ -2198,7 +2198,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.45rem;
 }
 
 .spine-round-tag {
@@ -2236,30 +2236,12 @@ body {
 
 .spine-round-title {
   font-family: var(--font-heading);
-  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
   font-weight: 800;
   letter-spacing: 0.05em;
   color: #ffffff;
-  margin-bottom: 0.65rem;
-  text-transform: uppercase;
-}
-
-.spine-tagline-quote {
-  display: inline-block;
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
-  font-weight: 800;
-  letter-spacing: 0.2em;
-  color: var(--primary-cyan);
-  text-shadow: 0 0 14px rgba(0, 210, 255, 0.5);
-  margin-bottom: 0.65rem;
-}
-
-.spine-round-desc {
-  font-size: 0.96rem;
-  line-height: 1.68;
-  color: #94a3b8;
   margin: 0;
+  text-transform: uppercase;
 }
 
 .final-round-card {
