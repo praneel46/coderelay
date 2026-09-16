@@ -613,6 +613,145 @@ body {
   filter: brightness(1.08);
 }
 
+/* ============================================================
+   ANIMATED REGISTER BUTTON (CYBER HUD THEME)
+   ============================================================ */
+.animated-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 15px 38px;
+  border: 4px solid transparent;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  background-color: rgba(6, 15, 33, 0.9);
+  border-radius: 100px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary-cyan);
+  box-shadow: 0 0 0 2px var(--primary-cyan), 0 0 24px rgba(0, 210, 255, 0.35);
+  cursor: pointer;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  vertical-align: middle;
+  line-height: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  user-select: none;
+}
+
+.animated-button svg {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  fill: var(--primary-cyan);
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  pointer-events: none;
+}
+
+.animated-button .arr-1 {
+  right: 18px;
+}
+
+.animated-button .arr-2 {
+  left: -25%;
+}
+
+.animated-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #00d2ff 0%, #0284c7 100%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 0 35px rgba(0, 210, 255, 0.8);
+  pointer-events: none;
+}
+
+.animated-button .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-10px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  white-space: nowrap;
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 12px transparent, 0 0 38px rgba(0, 210, 255, 0.7);
+  color: #030712;
+  border-radius: 12px;
+}
+
+.animated-button:hover .arr-1 {
+  right: -25%;
+}
+
+.animated-button:hover .arr-2 {
+  left: 18px;
+}
+
+.animated-button:hover .text {
+  transform: translateX(10px);
+}
+
+.animated-button:hover svg {
+  fill: #030712;
+}
+
+.animated-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 0 4px var(--primary-cyan);
+}
+
+.animated-button:hover .circle {
+  width: 340px;
+  height: 340px;
+  opacity: 1;
+}
+
+/* Nav variant for compact header bar */
+.animated-button.btn-nav-register {
+  padding: 10px 28px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  background-color: rgba(4, 10, 24, 0.85);
+}
+
+.animated-button.btn-nav-register svg {
+  width: 16px;
+  height: 16px;
+}
+
+.animated-button.btn-nav-register .arr-1 {
+  right: 12px;
+}
+
+.animated-button.btn-nav-register:hover .arr-2 {
+  left: 12px;
+}
+
+.animated-button.btn-nav-register .text {
+  transform: translateX(-8px);
+}
+
+.animated-button.btn-nav-register:hover .text {
+  transform: translateX(8px);
+}
+
+/* Full width modifier for mobile menu footer */
+.animated-button.w-full {
+  width: 100%;
+}
+
 .btn-secondary {
   background: rgba(8, 15, 30, 0.65);
   backdrop-filter: blur(12px);
@@ -3868,6 +4007,11 @@ body {
     font-size: 0.85rem;
   }
 
+  .animated-button {
+    padding: 13px 30px;
+    font-size: 14px;
+  }
+
   .hero-stat-pill {
     padding: 0.88rem 0.6rem;
     gap: 0.35rem;
@@ -4081,6 +4225,15 @@ body {
   .timer-unit {
     font-size: 0.62rem;
     letter-spacing: 0.08em;
+  }
+
+  .animated-button {
+    padding: 12px 24px;
+    font-size: 13px;
+  }
+
+  .animated-button .text {
+    letter-spacing: 0.1em;
   }
 
   .coord-photo-wrapper {
