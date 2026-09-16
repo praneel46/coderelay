@@ -282,49 +282,72 @@
           <p class="section-subtitle">UNTIL <span class="text-cyan">CODE RELAY</span></p>
         </div>
 
-        <!-- Live Countdown Cards Grid -->
-        <div class="countdown-grid reveal-stagger" id="liveCountdown" data-target="2026-10-30T09:00:00+05:30">
-          
-          <div class="timer-card glass-panel">
-            <div class="timer-corner-tl"></div>
-            <div class="timer-corner-br"></div>
-            <div class="timer-digits-box">
-              <span class="timer-digit" id="timerDays">47</span>
-            </div>
-            <div class="timer-label">DAYS</div>
-            <div class="timer-sub">REMAINING</div>
-          </div>
+        <!-- Live Countdown Telemetry HUD Console (Concept 1) -->
+        <div class="timer-hud-wrapper reveal-scale" id="liveCountdown" data-target="2026-10-30T09:00:00+05:30">
+          <div class="timer-console glass-panel">
+            <!-- Cyber HUD corner brackets -->
+            <div class="hud-corner hud-corner-tl" aria-hidden="true"></div>
+            <div class="hud-corner hud-corner-tr" aria-hidden="true"></div>
+            <div class="hud-corner hud-corner-bl" aria-hidden="true"></div>
+            <div class="hud-corner hud-corner-br" aria-hidden="true"></div>
 
-          <div class="timer-card glass-panel">
-            <div class="timer-corner-tl"></div>
-            <div class="timer-corner-br"></div>
-            <div class="timer-digits-box">
-              <span class="timer-digit" id="timerHours">14</span>
+            <!-- Top Telemetry Header -->
+            <div class="timer-hud-header">
+              <div class="hud-header-left">
+                <span class="hud-pulse-dot"></span>
+                <span class="hud-header-tag">SYS.SYNC // T-MINUS PROTOCOL</span>
+              </div>
+              <div class="hud-header-right">
+                <span class="hud-status-badge">GRID LAUNCH &bull; 30 OCT 2026</span>
+              </div>
             </div>
-            <div class="timer-label">HOURS</div>
-            <div class="timer-sub">ESTIMATED</div>
-          </div>
 
-          <div class="timer-card glass-panel">
-            <div class="timer-corner-tl"></div>
-            <div class="timer-corner-br"></div>
-            <div class="timer-digits-box">
-              <span class="timer-digit" id="timerMinutes">42</span>
+            <!-- Main Clock Telemetry Row -->
+            <div class="timer-clock-row">
+              <div class="timer-segment">
+                <div class="timer-digits-box">
+                  <span class="timer-digit" id="timerDays">47</span>
+                </div>
+                <span class="timer-unit">DAYS</span>
+              </div>
+
+              <span class="timer-separator" aria-hidden="true">:</span>
+
+              <div class="timer-segment">
+                <div class="timer-digits-box">
+                  <span class="timer-digit" id="timerHours">14</span>
+                </div>
+                <span class="timer-unit">HOURS</span>
+              </div>
+
+              <span class="timer-separator" aria-hidden="true">:</span>
+
+              <div class="timer-segment">
+                <div class="timer-digits-box">
+                  <span class="timer-digit" id="timerMinutes">42</span>
+                </div>
+                <span class="timer-unit">
+                  <span class="unit-full">MINUTES</span>
+                  <span class="unit-short">MINS</span>
+                </span>
+              </div>
+
+              <span class="timer-separator" aria-hidden="true">:</span>
+
+              <div class="timer-segment active-segment">
+                <div class="timer-digits-box">
+                  <span class="timer-digit pulse-accent" id="timerSeconds">18</span>
+                </div>
+                <span class="timer-unit">
+                  <span class="unit-full">SECONDS</span>
+                  <span class="unit-short">SECS</span>
+                </span>
+              </div>
             </div>
-            <div class="timer-label">MINUTES</div>
-            <div class="timer-sub">PRECISION</div>
-          </div>
 
-          <div class="timer-card glass-panel active-second-card">
-            <div class="timer-corner-tl"></div>
-            <div class="timer-corner-br"></div>
-            <div class="timer-digits-box">
-              <span class="timer-digit pulse-accent" id="timerSeconds">18</span>
-            </div>
-            <div class="timer-label">SECONDS</div>
-            <div class="timer-sub">LIVE SYNC</div>
+            <!-- Bottom Telemetry Scanline -->
+            <div class="timer-hud-scanline" aria-hidden="true"></div>
           </div>
-
         </div>
 
         <div class="timer-footer text-center reveal-up">
