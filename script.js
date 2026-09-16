@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initLiveCountdown();
   initScrollReveals();
   initRoundsSpineObserver();
+  initRulesTimelineObserver();
   initPrizeCounter();
   initCtaSection();
   initFaqAccordion();
@@ -590,4 +591,55 @@ function initFooterObserver() {
   });
 
   observer.observe(footer);
+}
+
+// ============================================================
+// EDITORIAL PROTOCOL TIMELINE OBSERVER
+// Progressively draws the vertical cyan telemetry line and illuminates
+// circular nodes and rule headings as each rule scrolls into view;
+// resets on exit so the animation replays on scroll re-entry.
+// ============================================================
+function initRulesTimelineObserver() {
+  const ruleItems = document.querySelectorAll(".rule-timeline-item");
+  const progressFill = document.getElementById("rulesProgressFill");
+  if (ruleItems.length === 0) return;
+
+  if (PREFERS_REDUCED_MOTION) {
+    ruleItems.forEach((item) => item.classList.add("is-active"));
+    if (progressFill) progressFill.style.height = "100%";
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-active");
+      } else {
+        entry.target.classList.remove("is-active");
+      }
+    });
+
+    // Calculate highest active rule item to draw the continuous cyan line
+    let highestActiveIdx = -1;
+    ruleItems.forEach((item, idx) => {
+      if (item.classList.contains("is-active")) {
+        highestActiveIdx = idx;
+      }
+    });
+
+    if (progressFill) {
+      if (highestActiveIdx >= 0) {
+        const percent = ((highestActiveIdx + 1) / ruleItems.length) * 100;
+        progressFill.style.height = `${percent}%`;
+      } else {
+        progressFill.style.height = "0%";
+      }
+    }
+  }, {
+    root: null,
+    threshold: 0.25,
+    rootMargin: "0px 0px -40px 0px"
+  });
+
+  ruleItems.forEach((item) => observer.observe(item));
 }
