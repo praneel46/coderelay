@@ -680,39 +680,63 @@
           </div>
         </div>
 
-        <!-- Separate Standalone Component: PRIZE DISTRIBUTION PANEL -->
-        <div class="prize-distribution-panel reveal-up" id="prizeDistribution">
-          <div class="prize-dist-header">
-            <span class="prize-dist-tag">OFFICIAL PROTOCOL // ALLOCATION</span>
-            <h3 class="prize-dist-title">PRIZE DISTRIBUTION</h3>
-            <p class="prize-dist-subtitle">Based on total number of registered teams.</p>
+        <!-- Standalone Compact Component: PRIZE DISTRIBUTION FLIP CARD -->
+        <div class="prize-flip-section reveal-up" id="prizeDistribution">
+          <div class="prize-flip-scene">
+            <div class="prize-flip-card" id="prizeFlipCard" role="region" aria-label="Prize Distribution Details">
+              <!-- FRONT FACE -->
+              <div class="prize-card-face prize-card-front" id="prizeCardFront" aria-hidden="false">
+                <span class="prize-flip-tag">OFFICIAL PROTOCOL</span>
+                <h3 class="prize-flip-title">PRIZE DISTRIBUTION</h3>
+                <p class="prize-flip-subtitle">Based on registered teams.</p>
+                <button type="button" class="prize-flip-btn prize-btn-to-back" id="prizeFlipToBackBtn" aria-label="View prize distribution details">
+                  <span class="btn-text">VIEW DETAILS</span>
+                  <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+                  <span class="flip-hint-icon" aria-hidden="true">&#x21bb;</span>
+                </button>
+              </div>
+
+              <!-- BACK FACE -->
+              <div class="prize-card-face prize-card-back" id="prizeCardBack" aria-hidden="true">
+                <div class="prize-back-header">
+                  <span class="prize-flip-tag">ALLOCATION MATRIX</span>
+                  <h3 class="prize-back-title">PRIZE DISTRIBUTION</h3>
+                </div>
+
+                <div class="prize-dist-grid">
+                  <div class="prize-dist-col">
+                    <span class="prize-bracket">&lt; 15 TEAMS</span>
+                    <div class="prize-dist-col-right">
+                      <div class="prize-award-title">1ST PLACE ONLY</div>
+                    </div>
+                  </div>
+                  <div class="prize-dist-col">
+                    <span class="prize-bracket">20+ TEAMS</span>
+                    <div class="prize-dist-col-right">
+                      <div class="prize-award-title">TOP 2</div>
+                      <span class="prize-award-sub">(1st &amp; 2nd Place)</span>
+                    </div>
+                  </div>
+                  <div class="prize-dist-col">
+                    <span class="prize-bracket">30+ TEAMS</span>
+                    <div class="prize-dist-col-right">
+                      <div class="prize-award-title">TOP 3</div>
+                      <span class="prize-award-sub">(1st, 2nd &amp; 3rd Place)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="prize-back-note">
+                  Final prize structure may be adjusted by the organizing committee if required.
+                </p>
+
+                <button type="button" class="prize-flip-btn prize-btn-to-front" id="prizeFlipToFrontBtn" aria-label="Return to front" tabindex="-1">
+                  <span class="btn-arrow" aria-hidden="true">&larr;</span>
+                  <span class="btn-text">BACK</span>
+                </button>
+              </div>
+            </div>
           </div>
-
-          <div class="prize-tiers-matrix">
-            <div class="prize-tier-card tier-tier1">
-              <span class="tier-bracket">&lt; 15 TEAMS</span>
-              <div class="tier-award-title">1st PLACE ONLY</div>
-              <span class="tier-accent-bar"></span>
-            </div>
-
-            <div class="prize-tier-card tier-tier2">
-              <span class="tier-bracket">20+ TEAMS</span>
-              <div class="tier-award-title">TOP 2</div>
-              <span class="tier-award-sub">(1st &amp; 2nd PLACE)</span>
-              <span class="tier-accent-bar"></span>
-            </div>
-
-            <div class="prize-tier-card tier-tier3">
-              <span class="tier-bracket">30+ TEAMS</span>
-              <div class="tier-award-title">TOP 3</div>
-              <span class="tier-award-sub">(1st, 2nd &amp; 3rd PLACE)</span>
-              <span class="tier-accent-bar"></span>
-            </div>
-          </div>
-
-          <p class="prize-dist-note">
-            Final prize structure may be adjusted by the organizing committee if required.
-          </p>
         </div>
       </div>
     </section>

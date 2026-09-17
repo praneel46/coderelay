@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initRoundsSpineObserver();
   initRulesTimelineObserver();
   initPrizeCounter();
+  initPrizeFlipCard();
   initCtaSection();
   initFaqAccordion();
   initRegistrationModal();
@@ -312,6 +313,60 @@ function initPrizeCounter() {
   });
 
   observer.observe(prizeSection);
+}
+
+// ============================================================
+// INTERACTIVE PRIZE DISTRIBUTION FLIP CARD
+// Explicit controls only: VIEW DETAILS -> Back, BACK -> Front
+// Flip state persists during normal scrolling without auto-reset
+// ============================================================
+function initPrizeFlipCard() {
+  const card = document.getElementById("prizeFlipCard");
+  const frontFace = document.getElementById("prizeCardFront");
+  const backFace = document.getElementById("prizeCardBack");
+  const toBackBtn = document.getElementById("prizeFlipToBackBtn");
+  const toFrontBtn = document.getElementById("prizeFlipToFrontBtn");
+
+  if (!card || !frontFace || !backFace || !toBackBtn || !toFrontBtn) return;
+
+  function setFlipped(isFlipped) {
+    if (isFlipped) {
+      card.classList.add("is-flipped");
+      frontFace.setAttribute("aria-hidden", "true");
+      backFace.setAttribute("aria-hidden", "false");
+      toBackBtn.setAttribute("tabindex", "-1");
+      toFrontBtn.setAttribute("tabindex", "0");
+      // Seamless focus transition for keyboard users
+      try { toFrontBtn.focus(); } catch (_) {}
+    } else {
+      card.classList.remove("is-flipped");
+      frontFace.setAttribute("aria-hidden", "false");
+      backFace.setAttribute("aria-hidden", "true");
+      toBackBtn.setAttribute("tabindex", "0");
+      toFrontBtn.setAttribute("tabindex", "-1");
+      try { toBackBtn.focus(); } catch (_) {}
+    }
+  }
+
+  toBackBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    setFlipped(true);
+  });
+
+  toFrontBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    setFlipped(false);
+  });
+
+  // Explicit keyboard activation
+  [toBackBtn, toFrontBtn].forEach((btn) => {
+    btn.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        btn.click();
+      }
+    });
+  });
 }
 
 // ============================================================
