@@ -2488,7 +2488,7 @@ body {
 .prize-flip-card {
   position: relative;
   width: 100%;
-  min-height: 250px;
+  min-height: 295px;
   transform-style: preserve-3d;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: var(--radius-lg);
@@ -2520,7 +2520,7 @@ body {
 
 /* Front Face */
 .prize-card-front {
-  padding: 2.2rem 2rem;
+  padding: 2.5rem 2rem;
   z-index: 2;
   transform: rotateY(0deg);
 }
@@ -2567,8 +2567,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
-  margin-bottom: 0.35rem;
+  gap: 0.2rem;
+  margin-bottom: 0.25rem;
 }
 
 .prize-back-title {
@@ -2581,62 +2581,72 @@ body {
   text-transform: uppercase;
 }
 
-/* Responsive Grid on Back Face */
+/* Responsive 3-Tier Grid on Back Face - Clean stacked rows on all devices */
 .prize-dist-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.65rem;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  margin: 0.35rem 0;
+  margin: 0.45rem 0;
+  border: 1px solid rgba(0, 210, 255, 0.16);
+  border-radius: var(--radius-sm);
+  background: rgba(4, 9, 22, 0.65);
+  overflow: hidden;
 }
 
 .prize-dist-col {
-  background: rgba(4, 9, 22, 0.65);
-  border: 1px solid rgba(0, 210, 255, 0.15);
-  border-radius: var(--radius-sm);
-  padding: 0.65rem 0.5rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  gap: 0.25rem;
-  text-align: center;
-  transition: border-color 0.2s ease;
+  padding: 0.48rem 0.85rem;
+  border-bottom: 1px solid rgba(0, 210, 255, 0.1);
+  background: transparent;
+  gap: 0.6rem;
+  text-align: left;
+  transition: background 0.2s ease;
+}
+
+.prize-dist-col:last-child {
+  border-bottom: none;
 }
 
 .prize-dist-col:hover {
-  border-color: rgba(0, 210, 255, 0.35);
+  background: rgba(0, 210, 255, 0.06);
 }
 
 .prize-bracket {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   color: var(--primary-cyan);
+  white-space: nowrap;
 }
 
 .prize-dist-col-right {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.45rem;
+  text-align: right;
 }
 
 .prize-award-title {
   font-family: var(--font-heading);
-  font-size: 0.98rem;
+  font-size: 0.95rem;
   font-weight: 800;
   letter-spacing: 0.04em;
   color: #ffffff;
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 .prize-award-sub {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   color: #94a3b8;
   letter-spacing: 0.04em;
-  margin-top: 2px;
+  white-space: nowrap;
 }
 
 .prize-back-note {
@@ -4460,91 +4470,11 @@ body {
 
   .prize-flip-section {
     max-width: 480px;
-    margin-top: 2.5rem;
+    margin-top: 2.25rem;
   }
 
   .prize-flip-card {
-    min-height: 255px;
-  }
-
-  /* When screen is narrower than 520px, switch back face grid to single column row items */
-  @media (max-width: 520px) {
-    .prize-flip-section {
-      max-width: 100%;
-      margin-top: 2rem;
-    }
-
-    .prize-flip-card {
-      min-height: 270px;
-    }
-
-    .prize-card-front {
-      padding: 1.8rem 1.25rem;
-    }
-
-    .prize-card-back {
-      padding: 1.15rem 1.1rem;
-    }
-
-    .prize-flip-title {
-      font-size: 1.35rem;
-    }
-
-    .prize-back-title {
-      font-size: 1.05rem;
-    }
-
-    .prize-dist-grid {
-      grid-template-columns: 1fr;
-      gap: 0;
-      border: 1px solid rgba(0, 210, 255, 0.14);
-      border-radius: var(--radius-sm);
-      background: rgba(4, 9, 22, 0.55);
-      overflow: hidden;
-      margin: 0.35rem 0;
-    }
-
-    .prize-dist-col {
-      border: none;
-      border-radius: 0;
-      background: transparent;
-      padding: 0.42rem 0.75rem;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      text-align: left;
-      gap: 0.5rem;
-      border-bottom: 1px solid rgba(0, 210, 255, 0.1);
-    }
-
-    .prize-dist-col:last-child {
-      border-bottom: none;
-    }
-
-    .prize-bracket {
-      font-size: 0.7rem;
-      white-space: nowrap;
-    }
-
-    .prize-dist-col-right {
-      align-items: flex-end;
-      text-align: right;
-    }
-
-    .prize-award-title {
-      font-size: 0.88rem;
-      white-space: nowrap;
-    }
-
-    .prize-award-sub {
-      font-size: 0.65rem;
-      white-space: nowrap;
-    }
-
-    .prize-back-note {
-      font-size: 0.7rem;
-      margin: 0.25rem 0 0.45rem 0;
-    }
+    min-height: 295px;
   }
 
   /* ============================================================
@@ -5021,6 +4951,52 @@ body {
     line-height: 1.5;
   }
 
+  .prize-flip-section {
+    max-width: 100%;
+    margin-top: 2rem;
+  }
+
+  .prize-flip-card {
+    min-height: 310px;
+  }
+
+  .prize-card-front {
+    padding: 2.2rem 1.25rem;
+  }
+
+  .prize-card-back {
+    padding: 1.25rem 1.1rem;
+  }
+
+  .prize-flip-title {
+    font-size: 1.35rem;
+  }
+
+  .prize-back-title {
+    font-size: 1.05rem;
+  }
+
+  .prize-dist-col {
+    padding: 0.45rem 0.75rem;
+  }
+
+  .prize-bracket {
+    font-size: 0.72rem;
+  }
+
+  .prize-award-title {
+    font-size: 0.88rem;
+  }
+
+  .prize-award-sub {
+    font-size: 0.66rem;
+  }
+
+  .prize-back-note {
+    font-size: 0.7rem;
+    margin: 0.25rem 0 0.45rem 0;
+  }
+
   .why-card {
     padding: 1.45rem 1.2rem;
   }
@@ -5204,6 +5180,35 @@ body {
 
   .animated-button .text {
     letter-spacing: 0.1em;
+  }
+
+  .prize-flip-card {
+    min-height: 315px;
+  }
+
+  .prize-card-front {
+    padding: 2rem 1rem;
+  }
+
+  .prize-card-back {
+    padding: 1.15rem 0.95rem;
+  }
+
+  .prize-dist-col {
+    padding: 0.42rem 0.65rem;
+    gap: 0.35rem;
+  }
+
+  .prize-bracket {
+    font-size: 0.68rem;
+  }
+
+  .prize-award-title {
+    font-size: 0.84rem;
+  }
+
+  .prize-award-sub {
+    font-size: 0.62rem;
   }
 
   .why-card {
